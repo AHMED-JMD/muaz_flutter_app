@@ -40,67 +40,72 @@ class _MyNavbarState extends State<MyNavbar> {
   Widget build(BuildContext context) {
     return  Directionality(
       textDirection: TextDirection.rtl,
-      child: Scaffold(
-        resizeToAvoidBottomInset: true,
-        body: FutureBuilder(
-          future: APISERVICE_Auth.GetUser(),
-          builder: (BuildContext context, AsyncSnapshot<Map> model){
-            if(model.hasData){
-              return PageView(
+      child: FutureBuilder(
+        future: APISERVICE_Auth.GetUser(),
+        builder: (BuildContext context, AsyncSnapshot<Map> model){
+          if(model.hasData){
+            return  Scaffold(
+              resizeToAvoidBottomInset: true,
+              body:  PageView(
                 controller: _pageController,
                 onPageChanged: (index) {
                   setState(() => _selectedIndex = index);
                 },
                 children: <Widget>[
-                  Subject_home(data: model.data!),
-                  UsrDashboard(data: model.data!),
+                  Subject_home(data: model.data!,),
+                  UsrDashboard(data: model.data!,),
                   Downloads(),
                 ],
-              );
-            } else{
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-          },
-        ),
-        bottomNavigationBar: BottomNavyBar(
-          selectedIndex: _selectedIndex,
-          showElevation: true, // use this to remove appBar's elevation
-          onItemSelected: (index) => {
-            setState(() {
-              _selectedIndex = index;
-            }),
-            if(index !=3){
-              _pageController.jumpToPage(index)
-            }else{
-              SharedServices.logout(context)
-            }
+              ),
+              bottomNavigationBar: BottomNavyBar(
+                selectedIndex: _selectedIndex,
+                showElevation: true, // use this to remove appBar's elevation
+                onItemSelected: (index) => {
+                  setState(() {
+                    _selectedIndex = index;
+                  }),
+                  if(index !=3){
+                    _pageController.jumpToPage(index)
+                  }else{
+                    SharedServices.logout(context)
+                  }
 
-          },
-          items: [
-            BottomNavyBarItem(
-              icon: Icon(Icons.apps),
-              title: Text('الرئيسية'),
-              activeColor: Colors.red,
-            ),
-            BottomNavyBarItem(
-                icon: Icon(Icons.people),
-                title: Text('فيديوهاتي'),
-                activeColor: Colors.purpleAccent
-            ),
-            BottomNavyBarItem(
-                icon: Icon(Icons.video_collection_rounded),
-                title: Text('التنزيلات'),
-                activeColor: Colors.purpleAccent
-            ),
-            BottomNavyBarItem(
-                icon: Icon(Icons.login_outlined),
-                title: Text('تسجيل الخروج'),
-                activeColor: Colors.blue
-            ),
-          ],
-        ),
+                },
+                items: [
+                  BottomNavyBarItem(
+                    icon: Icon(Icons.apps),
+                    title: Text('الرئيسية'),
+                    activeColor: Colors.red,
+                  ),
+                  BottomNavyBarItem(
+                      icon: Icon(Icons.people),
+                      title: Text('فيديوهاتي'),
+                      activeColor: Colors.purpleAccent
+                  ),
+                  BottomNavyBarItem(
+                      icon: Icon(Icons.video_collection_rounded),
+                      title: Text('التنزيلات'),
+                      activeColor: Colors.purpleAccent
+                  ),
+                  BottomNavyBarItem(
+                      icon: Icon(Icons.login_outlined),
+                      title: Text('تسجيل الخروج'),
+                      activeColor: Colors.blue
+                  ),
+                ],
+              ),
+            );
+          }else{
+            return Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
+              color: Colors.grey[300],
+              child: Center(
+                child: CircularProgressIndicator(),
+              ),
+            );
+          }
+        }
       ),
     );
   }

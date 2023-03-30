@@ -42,7 +42,7 @@ class _DownloadVideoState extends State<DownloadVideo> {
           onReceiveProgress: (rec, total){
             setState(() {
               downloading = true;
-              Progress = ((rec/ total) * 100).toStringAsFixed(0) + '%';
+              Progress = ((rec / total) * 100).toStringAsFixed(0);
             });
           }
       );
@@ -59,7 +59,7 @@ class _DownloadVideoState extends State<DownloadVideo> {
       String imagePath = await DownloadFolderPath();
       await DownloadFile(imagePath, link).then((ImageDirPath) {
         setState(() {
-          downloading = true;
+          downloading = false;
           Progress = 'completed';
           downloadedImagePath = ImageDirPath;
         });
@@ -69,15 +69,17 @@ class _DownloadVideoState extends State<DownloadVideo> {
 
   @override
   Widget build(BuildContext context) {
-    return downloading? Column(
+    return downloading && Progress != 'completed'? Column(
       children: [
         CircularProgressIndicator(),
         Text('downloading: $Progress')
       ],
-    ) : TextButton.icon(
-          onPressed: (){},
+    ) : Progress != 'completed' ? TextButton.icon(
+          onPressed: (){
+            DoDownloadFile();
+          },
           icon: Icon(Icons.file_download),
           label: Text('تحميل'),
-    );
+    ) : Text('تم التحميل');
   }
 }

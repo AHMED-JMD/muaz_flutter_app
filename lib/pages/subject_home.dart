@@ -23,8 +23,8 @@ class _Subject_homeState extends State<Subject_home> {
     return  Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        body: SingleChildScrollView(
-            child: Column(
+        body: ListView(
+            children: [Column(
               children: [
                 CustomAppbar(),
                 SizedBox(height: 20,),
@@ -75,7 +75,7 @@ class _Subject_homeState extends State<Subject_home> {
                 SubjectNavigator(),
 
               ],
-            )
+            )]
         )
       ),
     );
