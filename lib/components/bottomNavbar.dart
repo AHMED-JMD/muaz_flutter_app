@@ -7,6 +7,7 @@ import 'package:muaz_app/pages/subject_details.dart';
 import 'package:muaz_app/pages/subject_home.dart';
 import 'package:muaz_app/pages/user_dashboard.dart';
 import 'package:muaz_app/shared_services/SharedServices.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class MyNavbar extends StatefulWidget {
   const MyNavbar({Key? key}) : super(key: key);
@@ -101,7 +102,10 @@ class _MyNavbarState extends State<MyNavbar> {
               height: MediaQuery.of(context).size.height,
               color: Colors.grey[300],
               child: Center(
-                child: CircularProgressIndicator(),
+                child: SpinKitWave(
+                  color: Colors.blueAccent,
+                  size: 50.0,
+                ),
               ),
             );
           }

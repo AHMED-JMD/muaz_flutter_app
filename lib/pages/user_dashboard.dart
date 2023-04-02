@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:muaz_app/pages/user_videos.dart';
 
 class UsrDashboard extends StatefulWidget {
   final Map data;
@@ -27,7 +28,12 @@ class _UsrDashboardState extends State<UsrDashboard> {
             Card(
               child: ListTile(
                 onTap: (){
-                  Navigator.pushNamed(context, '/subject_detail');
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => UserVideos(userId: data['_id'], booknum: 'الكتاب الأول')
+                      )
+                  );
                 },
                 visualDensity: VisualDensity(vertical: 4),
                 leading: Image.asset('assets/images/subject2.jpeg'),
@@ -38,7 +44,12 @@ class _UsrDashboardState extends State<UsrDashboard> {
             Card(
               child: ListTile(
                 onTap: (){
-                  Navigator.pushNamed(context, '/subject_detail');
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => UserVideos(userId: data['_id'], booknum: 'الكتاب الثاني')
+                      )
+                  );;
                 },
                 visualDensity: VisualDensity(vertical: 4),
                 leading: Image.asset('assets/images/subject3.png'),
@@ -49,7 +60,12 @@ class _UsrDashboardState extends State<UsrDashboard> {
             Card(
               child: ListTile(
                 onTap: (){
-                  Navigator.pushNamed(context, '/subject_detail');
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => UserVideos(userId: data['_id'], booknum: 'كتاب الأدبي')
+                      )
+                  );
                 },
                 visualDensity: VisualDensity(vertical: 4),
                 leading: Image.asset('assets/images/4-rm.png'),

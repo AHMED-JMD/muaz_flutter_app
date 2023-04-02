@@ -174,20 +174,21 @@ class _RegisterState extends State<Register> {
                                 Navigator.pushReplacementNamed(context, '/login');
                               }
                           );
-                        } else{
-                          setState(() {
-                            isLoading = false;
-                          });
+                         }
+                      }).catchError((err) {
+                        setState(() {
+                          isLoading = false;
+                        });
+                        print(err);
                           FormHelper.showSimpleAlertDialog(
                               context,
                               'منصة استاذ معاذ',
-                               'response',
+                               'اسم المستخدم / رقم الهاتف موجود مسبقا',
                               'تم',
                                   (){
                                 Navigator.pop(context);
                               }
                           );
-                        }
                       });
                     }
                     },

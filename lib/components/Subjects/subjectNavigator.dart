@@ -5,6 +5,7 @@ import 'package:muaz_app/components/Subjects/Art_math.dart';
 import 'package:muaz_app/components/Subjects/first-year.dart';
 import 'package:muaz_app/components/Subjects/revision.dart';
 import 'package:muaz_app/components/Subjects/second-year.dart';
+import 'package:dropdown_button2/dropdown_button2.dart';
 
 class SubjectNavigator extends StatefulWidget {
   const SubjectNavigator({Key? key}) : super(key: key);
@@ -35,6 +36,18 @@ class _SubjectNavigatorState extends State<SubjectNavigator> {
     First_Year(),
     Second_Year(),
   ];
+
+  List<dynamic> filterList = [
+     'الكل',
+    'المتخصصة 1',
+     'المتخصصة 2',
+     'الاساسية',
+     'حصص المراجعة',
+     'الصف الأول',
+     'الصف الثاني',
+  ];
+  String? selectedValue;
+
   @override
   Widget build(BuildContext context) {
     return  Container(
@@ -42,99 +55,140 @@ class _SubjectNavigatorState extends State<SubjectNavigator> {
       child: Column(
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Expanded(
-                flex: 2,
-                child: TextButton(
-                  onPressed: (){
+              Text('تصنيف المواد :', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
+              DropdownButtonHideUnderline(
+                child: DropdownButton2(
+                  isExpanded: true,
+                  hint: Row(
+                    children: const [
+                      Icon(
+                        Icons.list,
+                        size: 16,
+                        color: Colors.yellow,
+                      ),
+                      SizedBox(
+                        width: 4,
+                      ),
+                      Expanded(
+                        child: Text(
+                          'اختر المادة',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
+                  ),
+                  items: filterList
+                      .map((item) => DropdownMenuItem<String>(
+                    value: item,
+                    child: Text(
+                      item,
+                      style: const TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ))
+                      .toList(),
+                  value: selectedValue,
+                  onChanged: (value) {
                     setState(() {
-                      _index = 0;
+                      selectedValue = value ;
                     });
+                    //change the state of pages ----------
+                    switch (value){
+                      case 'الكل' :
+                        setState(() {
+                          _index = 0;
+                        });
+                        break;
+                      case 'المتخصصة 1' :
+                        setState(() {
+                          _index = 1;
+                        });
+                        break;
+                      case 'المتخصصة 2' :
+                        setState(() {
+                          _index = 2;
+                        });
+                        break;
+                      case 'الاساسية' :
+                        setState(() {
+                          _index = 3;
+                        });
+                        break;
+                      case 'حصص المراجعة' :
+                        setState(() {
+                          _index = 4;
+                        });
+                        break;
+                      case 'الصف الأول' :
+                        setState(() {
+                          _index = 5;
+                        });
+                        break;
+                      case 'الصف الثاني' :
+                        setState(() {
+                          _index = 6;
+                        });
+                        break;
+                    }
+                   //---------------------------------
                   },
-                  style: TextButton.styleFrom(backgroundColor: Colors.white54, elevation: 2,),
-                  child: Text('الكل' ,style: TextStyle(color: Colors.black),),
+                  buttonStyleData: ButtonStyleData(
+                    height: 40,
+                    width: 150,
+                    padding: const EdgeInsets.only(left: 14, right: 14),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(14),
+                      border: Border.all(
+                        color: Colors.black26,
+                      ),
+                      color: Colors.deepOrangeAccent,
+                    ),
+                    elevation: 2,
+                  ),
+                  iconStyleData: const IconStyleData(
+                    icon: Icon(
+                      Icons.arrow_forward_ios_outlined,
+                    ),
+                    iconSize: 14,
+                    iconEnabledColor: Colors.yellow,
+                    iconDisabledColor: Colors.grey,
+                  ),
+                  dropdownStyleData: DropdownStyleData(
+                      maxHeight: 200,
+                      width: 200,
+                      padding: null,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(14),
+                        color: Colors.deepOrangeAccent,
+                      ),
+                      elevation: 8,
+                      offset: const Offset(-20, 0),
+                      scrollbarTheme: ScrollbarThemeData(
+                        radius: const Radius.circular(30),
+                        thickness: MaterialStateProperty.all(6),
+                        thumbVisibility: MaterialStateProperty.all(true),
+                      )),
+                  menuItemStyleData: const MenuItemStyleData(
+                    height: 40,
+                    padding: EdgeInsets.only(left: 14, right: 14),
+                  ),
                 ),
               ),
-              Expanded(
-                flex: 4,
-                child: TextButton(
-                  onPressed: (){
-                    setState(() {
-                      _index = 1;
-                    });
-                  },
-                  style: TextButton.styleFrom(backgroundColor: Colors.white54, elevation: 2,),
-                  child: Text('المتخصصة 1',style: TextStyle(color: Colors.black),),
-                ),
-              ),
-              Expanded(
-                flex: 4,
-                child: TextButton(
-                  onPressed: (){
-                    setState(() {
-                      _index = 2;
-                    });
-                  },
-                  style: TextButton.styleFrom(backgroundColor: Colors.white54, elevation: 2,),
-                  child: Text('المتخصصة 2',style: TextStyle(color: Colors.black)),
-                ),
-              ),
-              Expanded(
-                flex: 3,
-                child: TextButton(
-                  onPressed: (){
-                    setState(() {
-                      _index = 3;
-                    });
-                  },
-                  style: TextButton.styleFrom(backgroundColor: Colors.white54, elevation: 2,),
-                  child: Text('الأساسية',style: TextStyle(color: Colors.black)),
-                ),
-              ),
-              Expanded(
-                flex: 4,
-                child: TextButton(
-                  onPressed: (){
-                    setState(() {
-                      _index = 4;
-                    });
-                  },
-                  style: TextButton.styleFrom(backgroundColor: Colors.white54, elevation: 2,),
-                  child: Text('المراجعة',style: TextStyle(color: Colors.black)),
-                ),
-              ),
-            ],
-          ),
-          Row(
 
-            children: [
-              Expanded(
-                flex: 3,
-                child: TextButton(
-                  onPressed: (){
-                    setState(() {
-                      _index = 5;
-                    });
-                  },
-                  style: TextButton.styleFrom(backgroundColor: Colors.white54, elevation: 2,),
-                  child: Text('الصف الاول',style: TextStyle(color: Colors.black)),
-                ),
-              ),
-              Expanded(
-                flex: 3,
-                child: TextButton(
-                  onPressed: (){
-                    setState(() {
-                      _index = 6;
-                    });
-                  },
-                  style: TextButton.styleFrom(backgroundColor: Colors.white54, elevation: 2,),
-                  child: Text('الصف الثاني',style: TextStyle(color: Colors.black)),
-                ),
-              ),
             ],
           ),
-          SizedBox(height: 25,),
+          SizedBox(height: 35,),
           Pages[_index],
           SizedBox(height: 10,),
         ],

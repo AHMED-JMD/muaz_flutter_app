@@ -93,12 +93,12 @@ class _LoginPageState extends State<LoginPage> {
               (onSavedVal) {
                 username = onSavedVal;
               },
-            borderFocusColor: Colors.white,
+              borderFocusColor: Colors.white,
               borderColor: Colors.white,
-            prefixIconColor: Colors.white,
-            textColor: Colors.black,
-            hintColor: Colors.black.withOpacity(0.5),
-            borderRadius: 10
+              prefixIconColor: Colors.white,
+              textColor: Colors.black,
+              hintColor: Colors.black.withOpacity(0.5),
+              borderRadius: 10
           ),
           SizedBox(height: 20,),
           FormHelper.inputFieldWidget(
@@ -154,6 +154,9 @@ class _LoginPageState extends State<LoginPage> {
                         //navigate to home
                         Navigator.pushReplacementNamed(context, '/Subjects');
                       }else{
+                        setState(() {
+                          isLoading = false;
+                        });
                         FormHelper.showSimpleAlertDialog(
                             context,
                             'منصة استاذ معاذ',
@@ -163,9 +166,6 @@ class _LoginPageState extends State<LoginPage> {
                               Navigator.pop(context);
                             }
                         );
-                        setState(() {
-                          isLoading = false;
-                        });
                       }
                     });
                   }
