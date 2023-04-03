@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:muaz_app/Api/Subject.dart';
+import 'package:muaz_app/components/download-video.dart';
 import 'package:snippet_coder_utils/ProgressHUD.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
@@ -18,16 +19,37 @@ class UserVideos extends StatefulWidget {
       children: <Widget>[
          ListTile(
           leading: Icon(Icons.album),
-          title: Text('${video.subject} '),
-          subtitle: Text('${video.booknum} / ${video.chapter}'),
+          title: Text('${video.subject} باب ${video.chapter} '),
+          subtitle: Text('${video.booknum} / ${video.subName}'),
         ),
          Padding(
-          padding: EdgeInsets.all(16.0),
+          padding: EdgeInsets.all(11.0),
           child: Text(
             ' ${video.details}',
             textAlign: TextAlign.justify,
           ),
         ),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              TextButton.icon(
+                  onPressed: (){},
+                  icon: Icon(Icons.play_arrow),
+                  label: Text('مشاهدة'),
+                  style: TextButton.styleFrom(
+                    primary: Colors.white,
+                    backgroundColor: Colors.blueAccent,
+                    textStyle: TextStyle(
+                      color: Colors.red
+                    )
+                  ),
+              ),
+              DownloadVideo(link: video.link)
+            ],
+          ),
+        )
       ],
     ),
   );

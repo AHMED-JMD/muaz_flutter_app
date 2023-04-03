@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:external_path/external_path.dart';
 import 'package:dio/dio.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class DownloadVideo extends StatefulWidget {
   final String link;
@@ -42,7 +43,7 @@ class _DownloadVideoState extends State<DownloadVideo> {
           onReceiveProgress: (rec, total){
             setState(() {
               downloading = true;
-              Progress = ((rec / total) * 100).toStringAsFixed(0);
+              Progress = ((total / rec) * 100).toStringAsFixed(2);
             });
           }
       );
@@ -71,15 +72,25 @@ class _DownloadVideoState extends State<DownloadVideo> {
   Widget build(BuildContext context) {
     return downloading && Progress != 'completed'? Column(
       children: [
-        CircularProgressIndicator(),
+     SpinKitFadingCircle(
+    color: Colors.blueAccent,
+      size: 40.0,
+    ),
         Text('downloading: $Progress')
       ],
     ) : Progress != 'completed' ? TextButton.icon(
           onPressed: (){
             DoDownloadFile();
           },
-          icon: Icon(Icons.file_download),
+          icon: Icon(Icons.download_outlined),
           label: Text('تحميل'),
+          style: TextButton.styleFrom(
+          primary: Colors.white,
+          backgroundColor: Colors.redAccent,
+          textStyle: TextStyle(
+              color: Colors.red
+          ),
+        )
     ) : Text('تم التحميل');
   }
 }
