@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:muaz_app/components/VideoPlayer.dart';
-import 'package:muaz_app/components/bottomNavbar.dart';
 import 'package:muaz_app/components/download-video.dart';
 import 'package:muaz_app/models/Vedios/Vedios_request.dart';
-import 'package:muaz_app/models/Vedios/Vedios_response.dart';
-import 'package:muaz_app/models/demo_model.dart';
 import 'package:muaz_app/Api/Subject.dart';
 import 'package:snippet_coder_utils/ProgressHUD.dart';
 
@@ -49,7 +45,7 @@ class _SubjectDetailsState extends State<SubjectDetails> {
           centerTitle: true,
           backgroundColor: Colors.deepOrangeAccent,
         ),
-        body: ProgressHUD(
+        body: videos.length > 0 ? ProgressHUD(
           inAsyncCall : isLoading,
           opacity: 0.4,
           key: UniqueKey(),
@@ -63,13 +59,13 @@ class _SubjectDetailsState extends State<SubjectDetails> {
                       leading: Icon(Icons.subject),
                       title: Text('${videos[index].subject}'),
                       subtitle: Text('${videos[index].subName}', style: TextStyle(fontWeight: FontWeight.bold),),
-                      trailing: DownloadVideo(link: videos[index].link,),
+                      trailing: Icon(Icons.video_collection_rounded, color: Colors.blueAccent,),
                     ),
                   ),
                 );
               },
             ),
-        ),
+        ) : Center(child: Text('لا يوجد لديك فيديوهات', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),)),
         ),
     );
   }

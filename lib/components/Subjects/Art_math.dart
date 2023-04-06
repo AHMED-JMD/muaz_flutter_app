@@ -5,6 +5,7 @@ import 'package:muaz_app/models/art.dart';
 import 'package:image_card/image_card.dart';
 import 'package:muaz_app/pages/subject_details.dart';
 import 'package:muaz_app/shared_services/SharedServices.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class ArtMath extends StatefulWidget {
 
@@ -21,25 +22,26 @@ class _ArtMathState extends State<ArtMath> {
 
   //function to order
   void OrderBook () async {
+    Navigator.pop(context, 'Cancel');
     //set the state
     setState(() {
       isLoading = true;
     });
     //call api
-    String booknum = 'أدبي';
-    String kind = 'كتاب الأدبي';
+    String booknum = 'كتاب الأدبي';
+    String kind = 'أدبي';
+    String price = '20000';
     var details = await SharedServices.LoginDetails();
     String userId = details.user.id;
 
-    APISERVICE_Vedios.OrderBook(kind, booknum, userId).then((response) {
+    APISERVICE_Vedios.OrderBook(kind, booknum, price, userId).then((response) {
       //set the state
       setState(() {
         isLoading = false;
         isRequested = true;
       });
-      print(response);
-    });
 
+    });
   }
 
 
@@ -75,22 +77,37 @@ class _ArtMathState extends State<ArtMath> {
                 fontWeight: FontWeight.bold
             ),
             ),
+            isLoading ? SpinKitRotatingCircle(
+              color: Colors.blueAccent,
+              size: 50.0,
+            ) : isRequested ? Container(
+              height: 40,
+              color: Colors.green,
+              padding: EdgeInsets.only(left: 10, right: 10, top: 5),
+              child: Text(
+                'تم طلب الكتاب بنجاح',
+                style: TextStyle(fontSize: 18,color: Colors.white)
+                ,),
+            ) :
             InkWell(
               onTap: () => showDialog<String>(
                 context: context,
-                builder: (BuildContext context) => AlertDialog(
-                  title: const Text('طلب الكتاب'),
-                  content: const Text('هل انت متأكد من طلب كتاب الأدبي'),
-                  actions: <Widget>[
-                    TextButton(
-                      onPressed: () => Navigator.pop(context, 'Cancel'),
-                      child: const Text('الغاء'),
-                    ),
-                    TextButton(
-                      onPressed: () => OrderBook(),
-                      child: const Text('طلب'),
-                    ),
-                  ],
+                builder: (BuildContext context) => Directionality(
+                  textDirection: TextDirection.rtl,
+                  child: AlertDialog(
+                    title: const Text('طلب الكتاب'),
+                    content: const Text('هل انت متأكد من طلب كتاب الأدبي'),
+                    actions: <Widget>[
+                      TextButton(
+                        onPressed: () => Navigator.pop(context, 'Cancel'),
+                        child: const Text('الغاء'),
+                      ),
+                      TextButton(
+                        onPressed: () => OrderBook(),
+                        child: const Text('طلب'),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               child: Container(
@@ -100,7 +117,7 @@ class _ArtMathState extends State<ArtMath> {
                     color: Colors.grey.shade300,
                     borderRadius: BorderRadius.circular(12)
                 ),
-                child: Text('اطلب الكتاب بسعر 15000 جنيه'),
+                child: Text('اطلب الكتاب بسعر 20000 جنيه'),
               ),
             )
           ],

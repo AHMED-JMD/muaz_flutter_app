@@ -31,7 +31,7 @@ class _UsrDashboardState extends State<UsrDashboard> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => UserVideos(userId: data['_id'], booknum: 'الكتاب الأول')
+                          builder: (context) => UserVideos(userId: data['_id'], booknum: 'الكتاب الأول', kind: 'علمي')
                       )
                   );
                 },
@@ -47,7 +47,7 @@ class _UsrDashboardState extends State<UsrDashboard> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => UserVideos(userId: data['_id'], booknum: 'الكتاب الثاني')
+                          builder: (context) => UserVideos(userId: data['_id'], booknum: 'الكتاب الثاني', kind: 'علمي')
                       )
                   );;
                 },
@@ -63,7 +63,7 @@ class _UsrDashboardState extends State<UsrDashboard> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => UserVideos(userId: data['_id'], booknum: 'كتاب الأدبي')
+                          builder: (context) => UserVideos(userId: data['_id'], booknum: 'كتاب الأدبي', kind: 'أدبي')
                       )
                   );
                 },
@@ -76,11 +76,48 @@ class _UsrDashboardState extends State<UsrDashboard> {
             Card(
               child: ListTile(
                 onTap: (){
-                  Navigator.pushNamed(context, '/subject_detail');
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => UserVideos(userId: data['_id'], booknum: 'الكتاب الأول', kind: 'حصص مراجعة')
+                      )
+                  );
                 },
                 visualDensity: VisualDensity(vertical: 4),
                 leading: Image.asset('assets/images/subject2.png'),
-                title: Text('فيديوهات حصص المراجعة'),
+                title: Text(' فيديوهات حصص المراجعة المتخصصة 1'),
+              ),
+            ),
+            SizedBox(height: 13,),
+            Card(
+              child: ListTile(
+                onTap: (){
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => UserVideos(userId: data['_id'], booknum: 'الكتاب الثاني', kind: 'حصص مراجعة')
+                      )
+                  );
+                },
+                visualDensity: VisualDensity(vertical: 4),
+                leading: Image.asset('assets/images/subject2.png'),
+                title: Text(' فيديوهات حصص المراجعة المتخصصة 2'),
+              ),
+            ),
+            SizedBox(height: 13,),
+            Card(
+              child: ListTile(
+                onTap: (){
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => UserVideos(userId: data['_id'], booknum: 'كتاب الأدبي', kind: 'حصص مراجعة')
+                      )
+                  );
+                },
+                visualDensity: VisualDensity(vertical: 4),
+                leading: Image.asset('assets/images/subject2.png'),
+                title: Text(' فيديوهات حصص المراجعة الاساسية'),
               ),
             ),
           ],

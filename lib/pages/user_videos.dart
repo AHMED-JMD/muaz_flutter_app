@@ -5,11 +5,11 @@ import 'package:snippet_coder_utils/ProgressHUD.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class UserVideos extends StatefulWidget {
-  final String userId, booknum;
-  const UserVideos({Key? key, required this.userId, required this.booknum}) : super(key: key);
+  final String userId, booknum, kind;
+  const UserVideos({Key? key, required this.userId, required this.booknum, required this.kind}) : super(key: key);
 
   @override
-  State<UserVideos> createState() => _UserVideosState(userId: userId, booknum: booknum);
+  State<UserVideos> createState() => _UserVideosState(userId: userId, booknum: booknum, kind: kind);
 }
 //card widget
  Widget _card(BuildContext context, video){
@@ -19,7 +19,7 @@ class UserVideos extends StatefulWidget {
       children: <Widget>[
          ListTile(
           leading: Icon(Icons.album),
-          title: Text('${video.subject} باب ${video.chapter} '),
+          title: Text('${video.kind} باب ${video.chapter} '),
           subtitle: Text('${video.booknum} / ${video.subName}'),
         ),
          Padding(
@@ -46,7 +46,7 @@ class UserVideos extends StatefulWidget {
                     )
                   ),
               ),
-              DownloadVideo(link: video.link)
+              DownloadVideo(link: video.link, subName: video.subName,)
             ],
           ),
         )
@@ -58,8 +58,8 @@ class UserVideos extends StatefulWidget {
 
 
 class _UserVideosState extends State<UserVideos> {
-  final String userId, booknum;
-  _UserVideosState({required this.userId, required this.booknum});
+  final String userId, booknum, kind;
+  _UserVideosState({required this.userId, required this.booknum, required this.kind});
 
   List videos = [];
   bool isVideo = false;
@@ -74,7 +74,7 @@ class _UserVideosState extends State<UserVideos> {
     });
 
     //call server
-    APISERVICE_Vedios.UserVideos(userId, booknum).then((response) {
+    APISERVICE_Vedios.UserVideos(userId, booknum, kind).then((response) {
       setState(() {
         isLoading = false;
         isVideo = true;

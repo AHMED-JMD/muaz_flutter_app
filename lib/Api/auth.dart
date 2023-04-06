@@ -71,7 +71,7 @@ class APISERVICE_Auth {
    //check response ok
    if(respone.statusCode == 200){
      //SHARED SERVICE
-     print(respone.body);
+     print("successfully got the user data");
      return data;
    }else{
      return {};

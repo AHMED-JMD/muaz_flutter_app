@@ -1,22 +1,23 @@
-
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:external_path/external_path.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:dio/dio.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class DownloadVideo extends StatefulWidget {
-  final String link;
-  const DownloadVideo({Key? key,required this.link }) : super(key: key);
+  final String link, subName;
+  const DownloadVideo({Key? key, required this.link, required this.subName }) : super(key: key);
 
   @override
-  State<DownloadVideo> createState() => _DownloadVideoState(link: link);
+  State<DownloadVideo> createState() => _DownloadVideoState(link: link, subName: subName);
 }
 
 class _DownloadVideoState extends State<DownloadVideo> {
 //initialize link
-  final String link;
-  _DownloadVideoState({required this.link});
+  final String link, subName;
+  _DownloadVideoState({required this.link, required this.subName});
 
   bool downloading = false;
   String Progress = '';
@@ -33,9 +34,9 @@ class _DownloadVideoState extends State<DownloadVideo> {
   }
 
   //function to download the video
-  Future DownloadFile (downlaodPath, link) async {
+  Future DownloadFile (appDocDir, link) async {
     Dio dio = Dio();
-    var downloadedImagePath = '$downlaodPath/Mam/$link.mp4';
+    var downloadedImagePath = '${appDocDir.path}/Mam/$subName.mp4';
     try{
       await dio.download(
           "https://muaz-website.com/v1/vedios/app-stream?link=$link",
@@ -43,7 +44,7 @@ class _DownloadVideoState extends State<DownloadVideo> {
           onReceiveProgress: (rec, total){
             setState(() {
               downloading = true;
-              Progress = ((total / rec) * 100).toStringAsFixed(2);
+              Progress = ((rec / total * 100)).toStringAsFixed(2);
             });
           }
       );
@@ -57,8 +58,8 @@ class _DownloadVideoState extends State<DownloadVideo> {
   //now when user clicks the button
   Future<void> DoDownloadFile () async {
     if( await GetPermission()){
-      String imagePath = await DownloadFolderPath();
-      await DownloadFile(imagePath, link).then((ImageDirPath) {
+      Directory appDocDir = await getApplicationDocumentsDirectory();
+      await DownloadFile(appDocDir, link).then((ImageDirPath) {
         setState(() {
           downloading = false;
           Progress = 'completed';
