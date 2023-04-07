@@ -45,11 +45,11 @@ class _SubjectDetailsState extends State<SubjectDetails> {
           centerTitle: true,
           backgroundColor: Colors.deepOrangeAccent,
         ),
-        body: videos.length > 0 ? ProgressHUD(
+        body: ProgressHUD(
           inAsyncCall : isLoading,
           opacity: 0.4,
           key: UniqueKey(),
-          child: ListView.builder(
+          child: videos.length > 0 ?  ListView.builder(
               itemCount: videos.length,
               itemBuilder: (context, index){
                 return Padding(
@@ -64,8 +64,9 @@ class _SubjectDetailsState extends State<SubjectDetails> {
                   ),
                 );
               },
-            ),
-        ) : Center(child: Text('لا يوجد لديك فيديوهات', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),)),
+            ) : Center(child: Text('لا يوجد لديك فيديوهات', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+        )
+      ),
         ),
     );
   }

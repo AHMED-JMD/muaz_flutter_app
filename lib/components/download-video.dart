@@ -22,6 +22,7 @@ class _DownloadVideoState extends State<DownloadVideo> {
   bool downloading = false;
   String Progress = '';
   String downloadedImagePath = '';
+  CancelToken? _cancelToken;
 
   //function to get permission
   Future<bool> GetPermission () async {
@@ -41,10 +42,11 @@ class _DownloadVideoState extends State<DownloadVideo> {
       await dio.download(
           "https://muaz-website.com/v1/vedios/app-stream?link=$link",
           downloadedImagePath,
-          onReceiveProgress: (rec, total){
+          cancelToken: _cancelToken,
+          onReceiveProgress: (received, total){
             setState(() {
               downloading = true;
-              Progress = ((rec / total * 100)).toStringAsFixed(2);
+              Progress = ((received / total * 100)).toStringAsFixed(2) + "%";
             });
           }
       );
@@ -69,15 +71,33 @@ class _DownloadVideoState extends State<DownloadVideo> {
     }
   }
 
+  //stop downloading process
+  void _stopDownload() {
+    _cancelToken?.cancel("Download cancelled by user");
+  }
+
   @override
   Widget build(BuildContext context) {
     return downloading && Progress != 'completed'? Column(
       children: [
-     SpinKitFadingCircle(
-    color: Colors.blueAccent,
-      size: 40.0,
-    ),
-        Text('downloading: $Progress')
+        SpinKitFadingCircle(
+          color: Colors.blueAccent,
+          size: 40.0,
+        ),
+        Row(
+          children: [
+        //     InkWell(
+        //         onTap: (){
+        //           _stopDownload();
+        //         },
+        //         child: Icon(Icons.cancel),
+        //
+        //     ),
+            Text('downloading: $Progress'),
+          ],
+        ),
+
+
       ],
     ) : Progress != 'completed' ? TextButton.icon(
           onPressed: (){

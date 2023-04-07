@@ -47,12 +47,19 @@ class _VideoPlayerState extends State<MyVideoPlayer> {
         centerTitle: true,
         backgroundColor: Colors.deepOrangeAccent,
       ),
-      body: Container(
-
-        child: FlickVideoPlayer(
-            flickManager: flickManager
-        )
-      ),
+      body:  Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        color: Colors.blueGrey[300],
+        child: Center(
+            child: AspectRatio(
+              aspectRatio: 4/3,
+              child: FlickVideoPlayer(
+                  flickManager: flickManager,
+              ),
+            ),
+          ),
+      )
     );
   }
 }
