@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:muaz_app/Api/Subject.dart';
 import 'package:muaz_app/models/art.dart';
 
-import 'package:image_card/image_card.dart';
 import 'package:muaz_app/pages/subject_details.dart';
 import 'package:muaz_app/shared_services/SharedServices.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -46,24 +45,53 @@ class _ArtMathState extends State<ArtMath> {
 
 
 
-  //card widget
+  //cad widget
   Widget _card(BuildContext context, lesson) {
-    return InkWell(
-          onTap: (){
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => SubjectDetails(lesson: lesson)
-                )
-            );
-          },
-          child: FillImageCard(
-              width: MediaQuery.of(context).size.width/2.3,
-              heightImage: MediaQuery.of(context).size.height/7.2,
-              imageProvider: AssetImage('assets/images/${lesson.image}'),
-              title: Text('${lesson.title}'),
-              description: Text(' ${lesson.price } جنيه ')),
-        );
+    return Container(
+      width: MediaQuery.of(context).size.width/3.3,
+      height: MediaQuery.of(context).size.height/5.3,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12)
+      ),
+      child: Card(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              InkWell(
+                onTap: (){
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => SubjectDetails(lesson: lesson)
+                      )
+                  );
+                },
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.asset('assets/images/${lesson.image}', height: 100, width: MediaQuery.of(context).size.width,),
+                ),
+              ),
+              SizedBox(height: 10,),
+              Padding(
+                padding: const EdgeInsets.only(right: 10.0),
+                child: Text(
+                  '${lesson.title}',
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+                ),
+              ),
+              // SizedBox(height: 3,),
+              Padding(
+                padding: const EdgeInsets.only(right: 10.0),
+                child: Text(
+                  ' ${lesson.price } جنيه ',
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                ),
+              ),
+
+            ],
+          )
+      ),
+    );
   }
 
   @override

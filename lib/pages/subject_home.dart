@@ -42,7 +42,7 @@ class _Subject_homeState extends State<Subject_home> {
                               fontWeight: FontWeight.bold
                             ),
                           ),
-                          Text('في منصة استاذ معاذ لتدريس \n مقرر رياضيات الصف الثالث ثانوي',
+                          Text('في منصة استاذ معاذ لتدريس \n مقرر رياضيات الصف الثالث ثانوي \n رقم الهاتف : 0912212622',
                             style: TextStyle(
                               fontSize: 15,
                               color: Colors.black54,
