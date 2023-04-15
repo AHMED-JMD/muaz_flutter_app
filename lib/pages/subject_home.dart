@@ -7,16 +7,13 @@ import 'package:muaz_app/components/customAppbar.dart';
 
 
 class Subject_home extends StatefulWidget {
-  final Map data;
-  const Subject_home({Key? key, required this.data}) : super(key: key);
+  const Subject_home({Key? key}) : super(key: key);
 
   @override
-  State<Subject_home> createState() => _Subject_homeState(data: data);
+  State<Subject_home> createState() => _Subject_homeState();
 }
 
 class _Subject_homeState extends State<Subject_home> {
-  final Map data;
-  _Subject_homeState({required this.data});
 
   @override
   Widget build(BuildContext context) {
@@ -36,15 +33,16 @@ class _Subject_homeState extends State<Subject_home> {
                       child: Column(
                         children: [
                           Text(
-                              ' مرحبا ${ data['username'] }',
+                              'يمكنك الدفع عن طريق بنكك',
                             style: TextStyle(
-                              fontSize: 25,
+                              fontSize: 15,
                               fontWeight: FontWeight.bold
                             ),
                           ),
-                          Text('في منصة استاذ معاذ لتدريس \n مقرر رياضيات الصف الثالث ثانوي \n رقم الهاتف : 0912212622',
+                          Text('عبر رقم الحساب التالي: 2916188 \n بعد عملية الطلب ثم الاتصال على \n رقم الهاتف : 0912212622',
                             style: TextStyle(
                               fontSize: 15,
+                              fontWeight: FontWeight.bold,
                               color: Colors.black54,
                               wordSpacing: 1.5,
                             ),
@@ -61,10 +59,13 @@ class _Subject_homeState extends State<Subject_home> {
                             height: 90,
                             width: 90,
                             decoration: BoxDecoration(
-                              color: Colors.deepOrangeAccent,
+                              image: DecorationImage(
+                                image: AssetImage('assets/images/bankkpng.png')
+                              ),
+                                color: Colors.deepOrangeAccent,
                               borderRadius: BorderRadius.circular(15)
                             ),
-                            child: Icon(Icons.person_4_outlined),
+                            // child: Icon(Icons.person_4_outlined),
                           )
                         ],
                       ),

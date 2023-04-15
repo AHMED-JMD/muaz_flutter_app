@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
-import 'package:muaz_app/Api/auth.dart';
 import 'package:muaz_app/pages/downloads.dart';
 import 'package:muaz_app/pages/login.dart';
-import 'package:muaz_app/pages/subject_details.dart';
 import 'package:muaz_app/pages/subject_home.dart';
 import 'package:muaz_app/pages/user_dashboard.dart';
 import 'package:muaz_app/shared_services/SharedServices.dart';
@@ -17,6 +15,7 @@ class MyNavbar extends StatefulWidget {
 }
 
 class _MyNavbarState extends State<MyNavbar> {
+
   int _selectedIndex=0;
   late PageController _pageController;
   List links = [
@@ -37,15 +36,34 @@ class _MyNavbarState extends State<MyNavbar> {
     super.dispose();
   }
 
+  //---------------------------------
+  bool user = false;
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _isLoggedIn();
+  }
+
+  _isLoggedIn () async {
+    var _result = await SharedServices.isLoggedIn();
+    setState(() {
+      user = _result;
+    });
+  }
+  //--------------------------
+
   @override
   Widget build(BuildContext context) {
     return  Directionality(
       textDirection: TextDirection.rtl,
-      child: FutureBuilder(
-        future: APISERVICE_Auth.GetUser(),
-        builder: (BuildContext context, AsyncSnapshot<Map> model){
+      child:  FutureBuilder(
+        future: SharedServices.isLoggedIn(),
+        builder: (BuildContext context, AsyncSnapshot<bool> model){
+          print(model);
           if(model.hasData){
-            return  Scaffold(
+            bool islogged = model.data!;
+
+            return Scaffold(
               resizeToAvoidBottomInset: true,
               body:  PageView(
                 controller: _pageController,
@@ -53,9 +71,10 @@ class _MyNavbarState extends State<MyNavbar> {
                   setState(() => _selectedIndex = index);
                 },
                 children: <Widget>[
-                  Subject_home(data: model.data!,),
-                  UsrDashboard(data: model.data!,),
+                  Subject_home(),
+                  UsrDashboard(),
                   Downloads(),
+                  LoginPage()
                 ],
               ),
               bottomNavigationBar: BottomNavyBar(
@@ -68,7 +87,8 @@ class _MyNavbarState extends State<MyNavbar> {
                   if(index !=3){
                     _pageController.jumpToPage(index)
                   }else{
-                    SharedServices.logout(context)
+                    islogged ? SharedServices.logout(context)
+                        : Navigator.pushReplacementNamed(context, '/login')
                   }
 
                 },
@@ -88,9 +108,14 @@ class _MyNavbarState extends State<MyNavbar> {
                       title: Text('التنزيلات'),
                       activeColor: Colors.purpleAccent
                   ),
+                  islogged?
                   BottomNavyBarItem(
                       icon: Icon(Icons.login_outlined),
                       title: Text('تسجيل الخروج'),
+                      activeColor: Colors.blue
+                  ) : BottomNavyBarItem(
+                      icon: Icon(Icons.how_to_reg_rounded),
+                      title: Text('تسجيل الدخول'),
                       activeColor: Colors.blue
                   ),
                 ],
@@ -109,8 +134,10 @@ class _MyNavbarState extends State<MyNavbar> {
               ),
             );
           }
-        }
-      ),
+        },
+
+      )
+
     );
   }
 }

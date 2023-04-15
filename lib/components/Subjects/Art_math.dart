@@ -19,6 +19,22 @@ class _ArtMathState extends State<ArtMath> {
   bool isLoading = false;
   bool isRequested = false;
 
+  //---------------------------------
+  bool user = false;
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _isLoggedIn();
+  }
+
+  _isLoggedIn () async {
+    var _result = await SharedServices.isLoggedIn();
+    setState(() {
+      user = _result;
+    });
+  }
+  //--------------------------
+  
   //function to order
   void OrderBook () async {
     Navigator.pop(context, 'Cancel');
@@ -42,8 +58,6 @@ class _ArtMathState extends State<ArtMath> {
 
     });
   }
-
-
 
   //cad widget
   Widget _card(BuildContext context, lesson) {
@@ -117,7 +131,7 @@ class _ArtMathState extends State<ArtMath> {
                 style: TextStyle(fontSize: 18,color: Colors.white)
                 ,),
             ) :
-            InkWell(
+           user?  InkWell(
               onTap: () => showDialog<String>(
                 context: context,
                 builder: (BuildContext context) => Directionality(
@@ -147,7 +161,14 @@ class _ArtMathState extends State<ArtMath> {
                 ),
                 child: Text('اطلب الكتاب بسعر 20000 جنيه'),
               ),
-            )
+            ) :
+           ElevatedButton(
+             onPressed: (){
+               Navigator.pushReplacementNamed(context, '/login');
+             },
+             child: Text('سجل الدخول لتطلب الباب'),
+
+           ),
           ],
         ),
         SizedBox(height: 20,),

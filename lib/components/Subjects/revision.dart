@@ -21,6 +21,22 @@ class _RevisionMathState extends State<RevisionMath> {
   bool isLoading = false;
   bool isRequested = false;
 
+  //---------------------------------
+  bool user = false;
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _isLoggedIn();
+  }
+
+  _isLoggedIn () async {
+    var _result = await SharedServices.isLoggedIn();
+    setState(() {
+      user = _result;
+    });
+  }
+  //--------------------------
+
   //function to order
   void OrderBook () async {
     Navigator.pop(context, 'Cancel');
@@ -139,7 +155,7 @@ class _RevisionMathState extends State<RevisionMath> {
                 style: TextStyle(fontSize: 18,color: Colors.white)
                 ,),
             ) :
-             Container(
+            user ? Container(
                 height: 60,
                 padding: EdgeInsets.only(right: 2, left: 2,top: 6,bottom: 6),
                 decoration: BoxDecoration(
@@ -209,7 +225,14 @@ class _RevisionMathState extends State<RevisionMath> {
                     ),
                   ],
                 ),
-              ),
+              ) :
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.pushReplacementNamed(context, '/login');
+                    },
+                    child: Text('سجل الدخول لتطلب الباب'),
+
+                  ),
 
           ],
         ),

@@ -6,6 +6,7 @@ import 'package:muaz_app/components/Subjects/first-year.dart';
 import 'package:muaz_app/components/Subjects/revision.dart';
 import 'package:muaz_app/components/Subjects/second-year.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:muaz_app/shared_services/SharedServices.dart';
 
 class SubjectNavigator extends StatefulWidget {
   const SubjectNavigator({Key? key}) : super(key: key);
@@ -16,26 +17,22 @@ class SubjectNavigator extends StatefulWidget {
 
 class _SubjectNavigatorState extends State<SubjectNavigator> {
 
-  int _index = 0;
-//pages lists
-  List Pages =[
-    Column(
-      children: [
-        Science_1(),
-        Science_2(),
-        ArtMath(),
-        RevisionMath(),
-        First_Year(),
-        Second_Year(),
-      ],
-    ),
-    Science_1(),
-    Science_2(),
-    ArtMath(),
-    RevisionMath(),
-    First_Year(),
-    Second_Year(),
-  ];
+  //---------------------------------
+  bool user = false;
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _isLoggedIn();
+  }
+
+  _isLoggedIn () async {
+    var _result = await SharedServices.isLoggedIn();
+    setState(() {
+      user = _result;
+    });
+  }
+  //--------------------------
+
 
   List<dynamic> filterList = [
      'الكل',
@@ -50,8 +47,30 @@ class _SubjectNavigatorState extends State<SubjectNavigator> {
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
 
+    //page view -------------------------
+    int _index = 0;
+    //pages lists
+    List Pages =[
+      Column(
+        children: [
+          Science_1(),
+          Science_2(),
+          ArtMath(),
+          RevisionMath(),
+          First_Year(),
+          Second_Year(),
+        ],
+      ),
+      Science_1(),
+      Science_2(),
+      ArtMath(),
+      RevisionMath(),
+      First_Year(),
+      Second_Year(),
+    ];
+    //--------------------------------------------------
+    return  Container(
       child: Column(
         children: [
           Row(

@@ -21,6 +21,22 @@ class _Science_1State extends State<Science_1> {
   bool isLoading = false;
   bool isRequested = false;
 
+  //---------------------------------
+  bool user = false;
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _isLoggedIn();
+  }
+
+  _isLoggedIn () async {
+    var _result = await SharedServices.isLoggedIn();
+    setState(() {
+      user = _result;
+    });
+  }
+  //--------------------------
+
   //function to order
   void OrderBook () async {
     Navigator.pop(context, 'Cancel');
@@ -31,7 +47,7 @@ class _Science_1State extends State<Science_1> {
     //call api
     String kind = 'علمي';
     String booknum = 'الكتاب الأول';
-    String price = '15000';
+    String price = '20000';
     var details = await SharedServices.LoginDetails();
     String userId = details.user.id;
 
@@ -116,7 +132,8 @@ class _Science_1State extends State<Science_1> {
                 'تم طلب الكتاب بنجاح',
                 style: TextStyle(fontSize: 18,color: Colors.white)
                 ,),
-            ) : InkWell(
+            ) :
+            user ? InkWell(
                         onTap: () => showDialog<String>(
                         context: context,
                         builder: (BuildContext context) => Directionality(
@@ -145,9 +162,16 @@ class _Science_1State extends State<Science_1> {
                     color: Colors.grey.shade300,
                     borderRadius: BorderRadius.circular(12)
                 ),
-                child: Text('اطلب الكتاب بسعر 15000 جنيه'),
+                child: Text('اطلب الكتاب بسعر 20000 جنيه'),
               ),
-            )
+            ) :
+            ElevatedButton(
+              onPressed: (){
+                Navigator.pushReplacementNamed(context, '/login');
+              },
+              child: Text('سجل الدخول لتطلب الباب'),
+
+            ),
           ],
         ),
         SizedBox(height: 20,),
