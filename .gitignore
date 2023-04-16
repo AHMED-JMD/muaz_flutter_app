@@ -45,4 +45,5 @@ app.*.map.json
 #----------------
 android/key.properties
 android/app/upload-keystore.jks
-/lib/Api
+/lib/Api/auth.dart
+/lib/Api/Subject.dart
