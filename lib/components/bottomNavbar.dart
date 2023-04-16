@@ -88,7 +88,7 @@ class _MyNavbarState extends State<MyNavbar> {
                     _pageController.jumpToPage(index)
                   }else{
                     islogged ? SharedServices.logout(context)
-                        : Navigator.pushReplacementNamed(context, '/login')
+                        : _pageController.jumpToPage(index) // Navigator.pushReplacementNamed(context, '/login')
                   }
 
                 },

@@ -32,7 +32,28 @@ class _SubjectNavigatorState extends State<SubjectNavigator> {
     });
   }
   //--------------------------
-
+  //page view -------------------------
+  int _index = 0;
+  //pages lists
+  List Pages =[
+    Column(
+      children: [
+        Science_1(),
+        Science_2(),
+        ArtMath(),
+        RevisionMath(),
+        First_Year(),
+        Second_Year(),
+      ],
+    ),
+    Science_1(),
+    Science_2(),
+    ArtMath(),
+    RevisionMath(),
+    First_Year(),
+    Second_Year(),
+  ];
+  //--------------------------------------------------
 
   List<dynamic> filterList = [
      'الكل',
@@ -47,29 +68,6 @@ class _SubjectNavigatorState extends State<SubjectNavigator> {
 
   @override
   Widget build(BuildContext context) {
-
-    //page view -------------------------
-    int _index = 0;
-    //pages lists
-    List Pages =[
-      Column(
-        children: [
-          Science_1(),
-          Science_2(),
-          ArtMath(),
-          RevisionMath(),
-          First_Year(),
-          Second_Year(),
-        ],
-      ),
-      Science_1(),
-      Science_2(),
-      ArtMath(),
-      RevisionMath(),
-      First_Year(),
-      Second_Year(),
-    ];
-    //--------------------------------------------------
     return  Container(
       child: Column(
         children: [
