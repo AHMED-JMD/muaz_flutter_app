@@ -114,7 +114,7 @@ class _ArtMathState extends State<ArtMath> {
       children: [
         Column(
           children: [
-            Text('الرياضيات الاساسية', style: TextStyle(
+            Text('الرياضيات الاساسية 20,000 جنيه', style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold
             ),
@@ -131,43 +131,41 @@ class _ArtMathState extends State<ArtMath> {
                 style: TextStyle(fontSize: 18,color: Colors.white)
                 ,),
             ) :
-           user?  InkWell(
-              onTap: () => showDialog<String>(
-                context: context,
-                builder: (BuildContext context) => Directionality(
-                  textDirection: TextDirection.rtl,
-                  child: AlertDialog(
-                    title: const Text('طلب الكتاب'),
-                    content: const Text('هل انت متأكد من طلب كتاب الأدبي'),
-                    actions: <Widget>[
-                      TextButton(
-                        onPressed: () => Navigator.pop(context, 'Cancel'),
-                        child: const Text('الغاء'),
+            user?
+               ElevatedButton(
+                onPressed: (){
+                  showDialog<String>(
+                    context: context,
+                    builder: (BuildContext context) => Directionality(
+                      textDirection: TextDirection.rtl,
+                      child: AlertDialog(
+                        title: const Text('طلب الكتاب'),
+                        content: const Text('هل انت متأكد من طلب كتاب الأدبي'),
+                        actions: <Widget>[
+                          TextButton(
+                            onPressed: () => Navigator.pop(context, 'Cancel'),
+                            child: const Text('الغاء'),
+                          ),
+                          TextButton(
+                            onPressed: () => OrderBook(),
+                            child: const Text('طلب'),
+                          ),
+                        ],
                       ),
-                      TextButton(
-                        onPressed: () => OrderBook(),
-                        child: const Text('طلب'),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              child: Container(
-                height: 40,
-                padding: EdgeInsets.only(right: 6, left: 6,top: 6,bottom: 6),
-                decoration: BoxDecoration(
-                    color: Colors.grey.shade300,
-                    borderRadius: BorderRadius.circular(12)
-                ),
-                child: Text('اطلب الكتاب بسعر 20000 جنيه'),
-              ),
-            ) :
+                    ),
+                  );
+                },
+                  child: Text('اطلب الكتاب'),
+              )
+             :
            ElevatedButton(
              onPressed: (){
                Navigator.pushReplacementNamed(context, '/login');
              },
              child: Text('سجل الدخول لتطلب الباب'),
-
+             style: ElevatedButton.styleFrom(
+               primary: Colors.deepOrangeAccent, // Set the button's background color
+             ),
            ),
           ],
         ),
@@ -181,6 +179,7 @@ class _ArtMathState extends State<ArtMath> {
             ),
             itemBuilder: (context, index) => _card(context, Artlessons[index])
         ),
+        SizedBox(height: 15,)
       ],
     );
   }

@@ -138,7 +138,7 @@ class _RevisionMathState extends State<RevisionMath> {
       children: [
         Column(
           children: [
-            Text('حصص المراجعة', style: TextStyle(
+            Text('حصص المراجعة 20,000 جنيه', style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold
             ),
@@ -233,7 +233,6 @@ class _RevisionMathState extends State<RevisionMath> {
                     child: Text('سجل الدخول لتطلب الباب'),
 
                   ),
-
           ],
         ),
         SizedBox(height: 20,),
@@ -246,6 +245,7 @@ class _RevisionMathState extends State<RevisionMath> {
             ),
             itemBuilder: (context, index) => _card(context, Revisionlessons[index])
         ),
+        SizedBox(height: 15,)
       ],
     );
   }

@@ -116,7 +116,7 @@ class _Science_1State extends State<Science_1> {
       children: [
         Column(
           children: [
-            Text('الرياضيات المتخصصة 1', style: TextStyle(
+            Text('الرياضيات المتخصصة (1) 20,000 جنيه', style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold
             ),
@@ -133,44 +133,41 @@ class _Science_1State extends State<Science_1> {
                 style: TextStyle(fontSize: 18,color: Colors.white)
                 ,),
             ) :
-            user ? InkWell(
-                        onTap: () => showDialog<String>(
-                        context: context,
-                        builder: (BuildContext context) => Directionality(
-                        textDirection: TextDirection.rtl,
-                        child: AlertDialog(
-                          title:  Text('طلب الكتاب',),
-                          content:  Text(' هل انت متأكد من طلب كتاب المتخصصة 1'),
-                          actions: <Widget>[
-                            TextButton(
-                              onPressed: () => Navigator.pop(context, 'Cancel'),
-                              child: const Text('الغاء'),
-                      ),
-                            TextButton(
-                              onPressed: () => OrderBook(),
-                                child: const Text('طلب'),
-                      ),
-
-                    ],
+            user?
+            ElevatedButton(
+              onPressed: (){
+                showDialog<String>(
+                  context: context,
+                  builder: (BuildContext context) => Directionality(
+                    textDirection: TextDirection.rtl,
+                    child: AlertDialog(
+                      title: const Text('طلب الكتاب'),
+                      content: const Text('هل انت متأكد من طلب كتاب المتخصصة 1'),
+                      actions: <Widget>[
+                        TextButton(
+                          onPressed: () => Navigator.pop(context, 'Cancel'),
+                          child: const Text('الغاء'),
+                        ),
+                        TextButton(
+                          onPressed: () => OrderBook(),
+                          child: const Text('طلب'),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ),
-              child: Container(
-                height: 40,
-                padding: EdgeInsets.only(right: 6, left: 6,top: 6,bottom: 6),
-                decoration: BoxDecoration(
-                    color: Colors.grey.shade300,
-                    borderRadius: BorderRadius.circular(12)
-                ),
-                child: Text('اطلب الكتاب بسعر 20000 جنيه'),
-              ),
-            ) :
+                );
+              },
+              child: Text('اطلب الكتاب'),
+            )
+                :
             ElevatedButton(
               onPressed: (){
                 Navigator.pushReplacementNamed(context, '/login');
               },
               child: Text('سجل الدخول لتطلب الباب'),
-
+              style: ElevatedButton.styleFrom(
+                primary: Colors.deepOrangeAccent, // Set the button's background color
+              ),
             ),
           ],
         ),
@@ -184,6 +181,7 @@ class _Science_1State extends State<Science_1> {
             ),
             itemBuilder: (context, index) => _card(context, lessons[index])
         ),
+        SizedBox(height: 15,)
       ],
     );
   }

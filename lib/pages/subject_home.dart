@@ -39,7 +39,7 @@ class _Subject_homeState extends State<Subject_home> {
                               fontWeight: FontWeight.bold
                             ),
                           ),
-                          Text('عبر رقم الحساب التالي: 2916188 \n بعد عملية الطلب ثم الاتصال على \n رقم الهاتف : 0912212622',
+                          Text('عبر رقم الحساب التالي: 2916188 \n ثم ارسال الاشعار باسم الطالب على \n رقم الهاتف : 0912212622',
                             style: TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
