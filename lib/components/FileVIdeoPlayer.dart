@@ -52,7 +52,7 @@ class _FileVideoPlayerState extends State<FileVideoPlayer> {
         body:  Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          color: Colors.blueGrey[300],
+          color: Colors.blueGrey[100],
           child: Center(
             child: AspectRatio(
               aspectRatio: 4/3,

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
+import 'dart:io';
 import 'package:muaz_app/Api/auth.dart';
 import 'package:muaz_app/models/auth/Register_model.dart';
 import 'package:snippet_coder_utils/FormHelper.dart';
 import 'package:snippet_coder_utils/ProgressHUD.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);
@@ -24,6 +24,19 @@ class _RegisterState extends State<Register> {
 
   //global form key
   GlobalKey<FormState> globalFormKey = GlobalKey<FormState>();
+
+  //get device unique ID
+  Future<String?> _getId() async {
+    var deviceInfo = DeviceInfoPlugin();
+    if (Platform.isIOS) { // import 'dart:io'
+      var iosDeviceInfo = await deviceInfo.iosInfo;
+      return iosDeviceInfo.identifierForVendor; // Unique ID on iOS
+    } else {
+      var androidDeviceInfo = await deviceInfo.androidInfo;
+      return androidDeviceInfo.id; // Unique ID on Android
+    }
+  }
+
 
   //custom Register widget
   Widget _RegisterUI (BuildContext context){
@@ -151,20 +164,22 @@ class _RegisterState extends State<Register> {
           Center(
             child: FormHelper.submitButton(
                 'تسجيل',
-                    (){
+                    () async {
                     if(validateAndSave()){
                       //loader
                       setState(() {
                         isLoading = true;
                       });
                       //register model
-                      RegisterModel model = RegisterModel(username: username!, phoneNum: phoneNum!, confirmPhon: confirmPhon!);
+                      String? deviceId = await _getId();
+                      print(deviceId);
+                      RegisterModel model = RegisterModel(username: username!, phoneNum: phoneNum!, confirmPhon: confirmPhon!, deviceId: deviceId!);
                       //call api
                       APISERVICE_Auth.Register(model).then((response) {
                         setState(() {
                           isLoading = false;
                         });
-                        if(response.user!= null){
+                        if(response == true){
                           FormHelper.showSimpleAlertDialog(
                               context,
                               'منصة استاذ معاذ',
@@ -174,21 +189,20 @@ class _RegisterState extends State<Register> {
                                 Navigator.pushReplacementNamed(context, '/login');
                               }
                           );
-                         }
-                      }).catchError((err) {
-                        setState(() {
-                          isLoading = false;
-                        });
-                        print(err);
+                         } else{
+                          setState(() {
+                            isLoading = false;
+                          });
                           FormHelper.showSimpleAlertDialog(
                               context,
                               'منصة استاذ معاذ',
-                               'اسم المستخدم / رقم الهاتف موجود مسبقا',
+                              '$response',
                               'تم',
                                   (){
                                 Navigator.pop(context);
                               }
                           );
+                        }
                       });
                     }
                     },

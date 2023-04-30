@@ -10,14 +10,14 @@ import 'package:muaz_app/shared_services/SharedServices.dart';
 
 class APISERVICE_Auth {
   //login function
- static Future<bool> Login (Login_Model model) async{
+ static Future Login (Login_Model model) async{
    try{
 
      Map<String,String> requestHeaders = {
        'Content-Type' : 'application/json'
      };
 
-     var url = Uri.parse('https://muaz-website.com/users/auth');
+     var url = Uri.parse('https://muaz-website.com/users/auth/app');
      Response respone = await post(url, headers: requestHeaders, body: jsonEncode(model.toJson()));
      Map data = jsonDecode(respone.body);
      //check response ok
@@ -26,10 +26,12 @@ class APISERVICE_Auth {
        SharedServices.setLoginDetails(loginResponseJson(respone.body));
        return true;
      }else{
-       return false;
+       return data['msg'];
      }
    } on SocketException {
      return false;
+   } catch(e){
+     print(e);
    }
  }
 
@@ -40,11 +42,16 @@ class APISERVICE_Auth {
        'Content-Type' : 'application/json'
      };
 
-     var url = Uri.parse('https://muaz-website.com/users/register');
+     var url = Uri.parse('https://muaz-website.com/users/register/app');
      Response respone = await post(url, headers: requestHeaders, body: jsonEncode(model.toJson()));
      Map data = jsonDecode(respone.body);
+      if(respone.statusCode == 200){
+        registerResponseJson(respone.body);
+        return true;
+      }else{
+        return data['msg'];
+      }
 
-     return registerResponseJson(respone.body);
    } on SocketException {
      return 'error in connection';
    }
@@ -55,7 +62,7 @@ class APISERVICE_Auth {
  }
 
  //get user profile
- static Future<Map> GetUser () async{
+ static Future<Map> GetUser () async {
 
    var loginDetails = await SharedServices.LoginDetails();
    print(loginDetails);

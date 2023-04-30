@@ -1,10 +1,11 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'dart:io';
 import 'package:muaz_app/Api/auth.dart';
 import 'package:muaz_app/models/auth/Login_model.dart';
 import 'package:snippet_coder_utils/FormHelper.dart';
 import 'package:snippet_coder_utils/ProgressHUD.dart';
-
+import 'package:device_info_plus/device_info_plus.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -22,6 +23,18 @@ class _LoginPageState extends State<LoginPage> {
 
   //global form key
   GlobalKey<FormState> globalFormKey = GlobalKey<FormState>();
+
+  //get device unique ID
+  Future<String?> _getId() async {
+    var deviceInfo = DeviceInfoPlugin();
+    if (Platform.isIOS) { // import 'dart:io'
+      var iosDeviceInfo = await deviceInfo.iosInfo;
+      return iosDeviceInfo.identifierForVendor; // Unique ID on iOS
+    } else {
+      var androidDeviceInfo = await deviceInfo.androidInfo;
+      return androidDeviceInfo.id; // Unique ID on Android
+    }
+  }
 
   //custom login widget
   Widget _loginUI (BuildContext context){
@@ -137,17 +150,19 @@ class _LoginPageState extends State<LoginPage> {
           Center(
             child: FormHelper.submitButton(
                 'تسجيل الدخول',
-                    (){
+                    () async {
                   if(validateAndSave()){
                     //loader
                     setState(() {
                       isLoading = true;
                     });
                     //cal login request model
-                    Login_Model model = Login_Model(username: username!, phoneNum: phoneNum!);
+                    String? deviceId = await _getId();
+                    print(deviceId);
+                    Login_Model model = Login_Model(username: username!, phoneNum: phoneNum!, deviceId: deviceId!);
                     //call api
                     APISERVICE_Auth.Login(model).then((response) {
-                      if(response){
+                      if(response == true){
                         setState(() {
                           isLoading = false;
                         });
@@ -160,13 +175,14 @@ class _LoginPageState extends State<LoginPage> {
                         FormHelper.showSimpleAlertDialog(
                             context,
                             'منصة استاذ معاذ',
-                            'كلمة السر او رقم الهاتف غير صحيح',
+                            '${response}',
                             'تم',
-                            (){
+                                (){
                               Navigator.pop(context);
                             }
                         );
                       }
+
                     });
                   }
             },

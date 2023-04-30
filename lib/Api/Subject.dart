@@ -14,7 +14,7 @@ class APISERVICE_Vedios {
 
    var url = Uri.parse('https://muaz-website.com/v1/vedios');
    Response response = await post(url, headers: requestHeaders, body: jsonEncode(model.toJson()));
-
+    print(response);
    return videoResponseJson(response.body);
  }
 
