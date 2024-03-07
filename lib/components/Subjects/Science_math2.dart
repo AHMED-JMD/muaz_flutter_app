@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:muaz_app/Api/Subject.dart';
 import 'package:muaz_app/models/science2.dart';
-import 'package:image_card/image_card.dart';
+
 import 'package:muaz_app/pages/subject_details.dart';
 import 'package:muaz_app/shared_services/SharedServices.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';

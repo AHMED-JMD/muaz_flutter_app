@@ -17,5 +17,5 @@ class Revision_model {
 List<Revision_model> Revisionlessons = [
   Revision_model(id : 1,title: ' المتخصصة (1)', image: 'subject2.png',  kind: 'حصص مراجعة', booknum:'الكتاب الأول' , type:'video/mp4', price: 0),
   Revision_model(id : 2,title: ' المتخصصة (2)', image: 'subject2.png', kind: 'حصص مراجعة', booknum:'الكتاب الثاني' , type:'video/mp4', price: 0),
-  Revision_model(id : 3,title: 'الرياضيات الاساسية', image: 'subject2.png',  kind: 'حصص مراجعة', booknum:'كتاب الأدبي' , type:'video/mp4', price: 0),
+  Revision_model(id : 3,title: 'الاساسية', image: 'subject2.png',  kind: 'حصص مراجعة', booknum:'كتاب الأدبي' , type:'video/mp4', price: 0),
 ];

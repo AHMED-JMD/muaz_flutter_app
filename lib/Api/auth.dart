@@ -29,7 +29,7 @@ class APISERVICE_Auth {
        return data['msg'];
      }
    } on SocketException {
-     return false;
+     return 'check your internet connection';
    } catch(e){
      print(e);
    }
@@ -41,10 +41,11 @@ class APISERVICE_Auth {
      Map<String,String> requestHeaders = {
        'Content-Type' : 'application/json'
      };
-
+//192.168.224.109
      var url = Uri.parse('https://muaz-website.com/users/register/app');
      Response respone = await post(url, headers: requestHeaders, body: jsonEncode(model.toJson()));
      Map data = jsonDecode(respone.body);
+
       if(respone.statusCode == 200){
         registerResponseJson(respone.body);
         return true;
@@ -53,7 +54,7 @@ class APISERVICE_Auth {
       }
 
    } on SocketException {
-     return 'error in connection';
+     return 'error in internet connection';
    }
    catch (e){
      return e;

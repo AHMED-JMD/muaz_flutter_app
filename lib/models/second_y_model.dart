@@ -15,9 +15,9 @@ class Second_model {
 
 //state of data
 List<Second_model> lessons_second = [
-  Second_model(id : 1,title: 'باب الهندسة التحليلية', image: 'subject_second.jpg',kind: 'الصف الثاني', chapter:'الهندسة التحليلية' , type:'video/mp4', price: 0),
+  Second_model(id : 1,title: 'الهندسة التحليلية', image: 'subject_second.jpg',kind: 'الصف الثاني', chapter:'الهندسة التحليلية' , type:'video/mp4', price: 0),
   Second_model(id : 2,title: 'باب الدالة الاسية', image: 'subject_second.jpg',kind: 'الصف الثاني', chapter:'الدالة الاسية' , type:'video/mp4' , price: 0),
-  Second_model(id : 3,title: 'باب الدالة اللوغريثمية', image: 'subject_second.jpg',kind: 'الصف الثاني', chapter:'الدالة اللوغريثمية' , type:'video/mp4'  , price: 0),
+  Second_model(id : 3,title: 'الدالة اللوغريثمية', image: 'subject_second.jpg',kind: 'الصف الثاني', chapter:'الدالة اللوغريثمية' , type:'video/mp4'  , price: 0),
   Second_model(id : 4,title: 'باب الجذور الصم', image: 'subject_second.jpg',kind: 'الصف الثاني', chapter:'الجذور الصم' , type:'video/mp4', price: 0),
   Second_model(id : 5,title: 'باب حساب مثلثات', image: 'subject_second.jpg',kind: 'الصف الثاني', chapter:'حساب مثلثات' , type:'video/mp4', price: 0),
   Second_model(id : 6,title: 'باب المتتاليات', image: 'subject_second.jpg',kind: 'الصف الثاني', chapter:'المتتاليات' , type:'video/mp4', price: 0),

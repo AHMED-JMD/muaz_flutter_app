@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:muaz_app/components/MyAppBar.dart';
+import 'package:muaz_app/components/drawer.dart';
 import 'package:muaz_app/pages/user_videos.dart';
 import 'package:muaz_app/Api/auth.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -32,7 +34,6 @@ class _UsrDashboardState extends State<UsrDashboard> {
 
   @override
   Widget build(BuildContext context) {
-    print(user);
     if(user){
       return  FutureBuilder(
           future: APISERVICE_Auth.GetUser(),
@@ -40,11 +41,8 @@ class _UsrDashboardState extends State<UsrDashboard> {
             if(model.hasData){
               return
                 Scaffold(
-                  appBar: AppBar(
-                    title: Text('${model.data!['username']}'),
-                    centerTitle: true,
-                    backgroundColor: Colors.amberAccent,
-                  ),
+                  appBar: MyAppBar(context),
+                  drawer: AppDrawer(),
                   body: Padding(
                     padding: const EdgeInsets.only(top: 20.0),
                     child: ListView(

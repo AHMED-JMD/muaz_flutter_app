@@ -67,7 +67,6 @@ class _LoginPageState extends State<LoginPage> {
                     'منصة استاذ معاذ',
                   style: TextStyle(
                     fontSize: 40.0,
-                    fontWeight: FontWeight.bold,
                     color: Colors.orange[900]
                   ),
                 )
@@ -133,18 +132,18 @@ class _LoginPageState extends State<LoginPage> {
               textColor: Colors.black,
               hintColor: Colors.black.withOpacity(0.5),
               borderRadius: 10,
-              suffixIcon: Icon(Icons.phone_android),
-            //   obscureText: hidePassword,
-            //   suffixIcon: IconButton(
-            //     onPressed: (){
-            //       setState(() {
-            //         hidePassword = !hidePassword;
-            //       });
-            //     },
-            //     icon: Icon(
-            //       hidePassword ? Icons.visibility_off : Icons.visibility
-            //     )
-            // )
+              prefixIcon: Icon(Icons.phone_android),
+              obscureText: hidePassword,
+              suffixIcon: IconButton(
+                onPressed: (){
+                  setState(() {
+                    hidePassword = !hidePassword;
+                  });
+                },
+                icon: Icon(
+                  hidePassword ? Icons.visibility_off : Icons.visibility
+                )
+            )
           ),
           SizedBox(height: 20,),
           Center(

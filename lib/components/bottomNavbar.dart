@@ -59,7 +59,6 @@ class _MyNavbarState extends State<MyNavbar> {
       child:  FutureBuilder(
         future: SharedServices.isLoggedIn(),
         builder: (BuildContext context, AsyncSnapshot<bool> model){
-          print(model);
           if(model.hasData){
             bool islogged = model.data!;
 

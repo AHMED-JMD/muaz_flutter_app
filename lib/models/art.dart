@@ -15,7 +15,7 @@ class Art_model {
 
 //state of data
 List<Art_model> Artlessons = [
-  Art_model(id : 1,title: 'باب الدوال والنهايات', image: '4-rm.png', kind: 'أدبي', chapter:'الدوال الحقيقية والنهايات' , type:'video/mp4', price: 0),
+  Art_model(id : 1,title: 'الدوال والنهايات', image: '4-rm.png', kind: 'أدبي', chapter:'الدوال الحقيقية والنهايات' , type:'video/mp4', price: 0),
   Art_model(id : 2,title: 'باب التفاضل', image: '4-rm.png', kind: 'أدبي', chapter:'التفاضل' , type:'video/mp4', price: 0),
   Art_model(id : 3,title: 'باب التكامل', image: '4-rm.png',kind: 'أدبي', chapter:'التكامل' , type:'video/mp4', price: 0),
   Art_model(id : 4,title: 'باب الاحصاء', image: '4-rm.png' ,kind: 'أدبي', chapter:'الاحصاء' , type:'video/mp4', price: 0),

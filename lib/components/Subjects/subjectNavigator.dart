@@ -103,13 +103,13 @@ class _SubjectNavigatorState extends State<SubjectNavigator> {
                   ),
                   items: filterList
                       .map((item) => DropdownMenuItem<String>(
-                    value: item,
-                    child: Text(
-                      item,
-                      style: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        value: item,
+                        child: Text(
+                          item,
+                          style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
                       ),
                       overflow: TextOverflow.ellipsis,
                     ),
