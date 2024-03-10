@@ -43,15 +43,145 @@ class _Subject_homeState extends State<Subject_home> {
               children: [
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.width/3.0,
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage('assets/images/bg3.jpg'),
-                          fit: BoxFit.cover,
-                        colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.5), BlendMode.dstOver)
-                      )
+                  height: MediaQuery.of(context).size.width/2.3,
+                  color: Colors.grey[200],
+                  // decoration: BoxDecoration(
+                  //     image: DecorationImage(
+                  //         image: AssetImage('assets/images/bg3.jpg'),
+                  //         fit: BoxFit.cover,
+                  //       colorFilter: ColorFilter.mode(Colors.blueGrey.withOpacity(0.5), BlendMode.lighten)
+                  //     )
+                  // ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(' الرياضيات :',
+                              style: GoogleFonts.alexandria(
+                                  color: Colors.black,
+                                  fontSize: 25,
+                                  // fontWeight: FontWeight.w600
+                              )
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          InkWell(
+                            onTap: (){
+                              Navigator.pushReplacementNamed(context, '/math1');
+                            },
+                            child: Container(
+                              width: MediaQuery.of(context).size.width/3.5,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  color: Colors.blue[400]
+                              ),
+                              child: Text('المتخصصة 1',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ),
+                          InkWell(
+                            onTap: (){
+                              Navigator.pushReplacementNamed(context, '/math2');
+                            },
+                            child: Container(
+                              width: MediaQuery.of(context).size.width/3.5,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  color: Colors.blue[400]
+                              ),
+                              child: Text('المتخصصة 2',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ),
+                          InkWell(
+                            onTap: (){
+                              Navigator.pushReplacementNamed(context, '/basic_math');
+                            },
+                            child: Container(
+                              width: MediaQuery.of(context).size.width/3.5,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  color: Colors.blue[400]
+                              ),
+                              child: Text('الاساسية',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 10,),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          InkWell(
+                            onTap: (){
+                              Navigator.pushReplacementNamed(context, '/revision_lessons');
+                            },
+                            child: Container(
+                              width: MediaQuery.of(context).size.width/3.2,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  color: Colors.deepOrange[400]
+                              ),
+                              child: Text('حصص المراجعة',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ),
+                          InkWell(
+                            onTap: (){
+                              Navigator.pushReplacementNamed(context, '/first_class_math');
+                            },
+                            child: Container(
+                              width: MediaQuery.of(context).size.width/3.5,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  color: Colors.deepOrange[400]
+                              ),
+                              child: Text('الصف الاول',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ),
+                          InkWell(
+                            onTap: (){
+                              Navigator.pushReplacementNamed(context, '/second_class_math');
+                            },
+                            child: Container(
+                              width: MediaQuery.of(context).size.width/3.5,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  color: Colors.deepOrange[400]
+                              ),
+                              child: Text('الصف الثاني',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 15,)
+                    ],
                   ),
                 ),
+
                 SizedBox(height: 30,),
                 Container(
                   width: MediaQuery.of(context).size.width,
@@ -79,7 +209,7 @@ class _Subject_homeState extends State<Subject_home> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'طرق الدفع',
+                      'رسوم الاشتراك',
                       style: TextStyle(
                           fontSize: 21,
                           fontWeight: FontWeight.bold
@@ -93,72 +223,96 @@ class _Subject_homeState extends State<Subject_home> {
                   child: Divider(color: Colors.deepOrange, thickness: 2,),
                 ),
                 SizedBox(height: 15, ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 13.0),
+                    Container(
+                      height: MediaQuery.of(context).size.width/2.5,
+                      width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage('assets/images/bankk3.webp'),
+                            fit: BoxFit.cover,
+                            colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.5), BlendMode.darken),
+                          ),
+                          color: Colors.blue,
+                      ),
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                              '  عن طريق بنكك',
+                            'بنكك على رقم الحساب',
                             style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold
+                                fontSize: 23,
+                                fontWeight: FontWeight.bold,
+                              color: Colors.white
                             ),
                           ),
-                          Container(
-                            height: 100,
-                            width: 75,
-                            decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    image: AssetImage('assets/images/bankkpng.png')
-                                ),
+                          Text('2916188',
+                            style: TextStyle(
+                                fontSize: 22,
                                 color: Colors.white,
-                                borderRadius: BorderRadius.circular(15)
+                                fontWeight: FontWeight.bold
                             ),
-                            // child: Icon(Icons.person_4_outlined),
                           ),
-                          Text('2916188', style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),)
                         ],
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 13.0,),
+                    SizedBox(height: 10,),
+                    Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        SizedBox(
+                          width: 200,
+                            child: Divider(color: Colors.deepOrange, thickness: 1,)
+                        ),
+                        Container(
+                          color: Colors.white,
+                          child: Text('أو',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(fontSize: 17),
+                          ),
+                        )
+                      ],
+                    ),
+                    SizedBox(height: 10,),
+                    Container(
+                      height: MediaQuery.of(context).size.width/2.5,
+                      width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage('assets/images/Vodafone-Cash2.png'),
+                            fit: BoxFit.cover,
+                            colorFilter: ColorFilter.mode(Colors.black45.withOpacity(0.6), BlendMode.darken),
+                          ),
+                          color: Colors.white,
+                      ),
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
                             '  عن طريق فودافون كاش',
                             style: TextStyle(
-                                fontSize: 15,
+                                fontSize: 23,
+                                color: Colors.white,
                                 fontWeight: FontWeight.bold
                             ),
                           ),
-                          Container(
-                            height: 100,
-                            width: 100,
-                            decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    image: AssetImage('assets/images/vodafonecash.png')
-                                ),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(15)
-                            ),
-                            // child: Icon(Icons.person_4_outlined),
+                          Text('. . . coming soon',
+                            style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
                           ),
-                          Text('. . . . . . . . . .', style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),)
-
                         ],
                       ),
-                    )
+                    ),
                   ],
                 ),
                 SizedBox(height: 20,),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
+                Container(
+                  width: MediaQuery.of(context).size.width/1.3,
                   child: Text('** ثم ارسال الاشعار على واتساب باسم الطالب علي اي من الارقام التالية : \n '
-                      ' 249912212622+ || 201508442003+ '),
+                      ' 249912212622+ || 201508442003+ ',
+                    textAlign: TextAlign.center,
+                  ),
                 ),
                 SizedBox(height: 40,),
                 SizedBox(
@@ -177,8 +331,8 @@ class _Subject_homeState extends State<Subject_home> {
                     label: Text('تصفح المطبوعات والحصص المباشرة على الموقع',
                       style: GoogleFonts.albertSans(
                           fontWeight: FontWeight.bold,
-                          color: Colors.deepOrange,
-                          fontSize: 15
+                          color: Colors.blue[800],
+                          fontSize: 15,
                       )
                     )
                 ),
