@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:muaz_app/pages/subject_details.dart';
+import 'package:muaz_app/pages/revision-details.dart';
 
 import 'package:image_card/image_card.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -112,7 +112,7 @@ class _RevisionsState extends State<Revisions> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => SubjectDetails(lesson: lesson)
+                          builder: (context) => RevisiontDetails(lesson: lesson)
                       )
                   );
                 },

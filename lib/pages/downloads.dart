@@ -52,13 +52,11 @@ class _DownloadsState extends State<Downloads> {
     final downloads = _downloadsDirectory.listSync();
     setState(() {
       _downloads = downloads;
-      print(_downloads);
     });
   }
 
   String getName (file){
     String filename = file.path.split('/').last;
-    print(filename);
     return filename;
   }
 

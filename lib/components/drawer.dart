@@ -65,10 +65,14 @@ class _AppDrawerState extends State<AppDrawer> {
                       )
                   ],
                 ) :
-                Text('الرجاء تسجيل الدخول!!', style: TextStyle(
-                  color: Colors.white,
-                  fontSize: MediaQuery.of(context).size.width/15
-                ),
+                Column(
+                  children: [
+                    Text('الرجاء تسجيل الدخول!!', style: TextStyle(
+                      color: Colors.white,
+                      fontSize: MediaQuery.of(context).size.width/15
+                    ),
+                    ),
+                  ],
                 ),
               ],
             ),

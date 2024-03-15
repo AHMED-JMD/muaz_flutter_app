@@ -19,7 +19,7 @@ class APISERVICE_Vedios {
  }
 
  //get revision videos
- static Future<VediosResponse> GetRevisionVedios ( kind,  booknum,  type) async {
+ static Future<VediosResponse> GetRevisionVedios (kind,  booknum, type) async {
      Map<String,String> requestHeaders = {
        'Content-Type' : 'application/json',
      };

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:muaz_app/components/bottomNavbar.dart';
 import 'package:muaz_app/pages/BasicMath.dart';
 import 'package:muaz_app/pages/FirstClassMath.dart';
+import 'package:muaz_app/pages/IntroductionPage.dart';
 import 'package:muaz_app/pages/Math1.dart';
 import 'package:muaz_app/pages/Math2.dart';
 import 'package:muaz_app/pages/Revisions.dart';
@@ -13,7 +14,7 @@ import 'pages/register.dart';
 //packages
 import 'package:resize/resize.dart';
 
-Widget _defaultHome = const MyNavbar();
+Widget _defaultHome = const OnBoardingScreen();
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 

@@ -21,22 +21,24 @@ class _RevisionDetailsState extends State<RevisiontDetails> {
 
   @override
   void initState() {
+    getVedios();
+  }
+
+  Future getVedios() async {
     //set loading to true
     setState(() {
       isLoading = true;
     });
     //call api
-
-    APISERVICE_Vedios.GetRevisionVedios(lesson!.kind, lesson!.booknum, lesson!.type).then((response){
+    final response = await APISERVICE_Vedios.GetRevisionVedios(lesson!.kind, lesson!.booknum, lesson!.type);
       setState(() {
         isLoading = false;
+        videos = response.data;
       });
-      videos = response.data;
-    });
   }
+
   @override
   Widget build(BuildContext context) {
-    print(videos);
     return  Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(

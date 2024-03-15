@@ -43,8 +43,7 @@ class _Subject_homeState extends State<Subject_home> {
               children: [
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.width/2.3,
-                  color: Colors.grey[200],
+                  color: Colors.grey[100],
                   // decoration: BoxDecoration(
                   //     image: DecorationImage(
                   //         image: AssetImage('assets/images/bg3.jpg'),
@@ -59,17 +58,18 @@ class _Subject_homeState extends State<Subject_home> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(' الرياضيات :',
-                              style: GoogleFonts.alexandria(
+                            padding: const EdgeInsets.only(top: 20.0, right: 10),
+                            child: Text(' مواد الرياضيات :',
+                              style: TextStyle(
                                   color: Colors.black,
-                                  fontSize: 25,
+                                  fontSize: 30,
                                   // fontWeight: FontWeight.w600
                               )
                             ),
                           ),
                         ],
                       ),
+                      SizedBox(height: 30,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
@@ -78,14 +78,25 @@ class _Subject_homeState extends State<Subject_home> {
                               Navigator.pushReplacementNamed(context, '/math1');
                             },
                             child: Container(
-                              width: MediaQuery.of(context).size.width/3.5,
+                              width: 150,
+                              height: 150,
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
-                                  color: Colors.blue[400]
+                                  shape: BoxShape.circle,
+                                  color: Colors.grey[300],
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.5),
+                                    spreadRadius: 5,
+                                    blurRadius: 7,
+                                    offset: Offset(0, 3), // changes the position of the shadow
+                                  ),
+                                ],
                               ),
-                              child: Text('المتخصصة 1',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                              child: Center(
+                                child: Text('المتخصصة 1',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(fontSize: 21,),
+                                ),
                               ),
                             ),
                           ),
@@ -94,68 +105,118 @@ class _Subject_homeState extends State<Subject_home> {
                               Navigator.pushReplacementNamed(context, '/math2');
                             },
                             child: Container(
-                              width: MediaQuery.of(context).size.width/3.5,
+                              width: 150,
+                              height: 150,
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
-                                  color: Colors.blue[400]
+                                shape: BoxShape.circle,
+                                color: Colors.blue[900],
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.blue[900]!.withOpacity(0.5),
+                                    spreadRadius: 5,
+                                    blurRadius: 7,
+                                    offset: Offset(0, 3), // changes the position of the shadow
+                                  ),
+                                ],
                               ),
-                              child: Text('المتخصصة 2',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                          ),
-                          InkWell(
-                            onTap: (){
-                              Navigator.pushReplacementNamed(context, '/basic_math');
-                            },
-                            child: Container(
-                              width: MediaQuery.of(context).size.width/3.5,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
-                                  color: Colors.blue[400]
-                              ),
-                              child: Text('الاساسية',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                              child: Center(
+                                child: Text('المتخصصة 2',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(fontSize: 21,color: Colors.white,),
+                                ),
                               ),
                             ),
                           ),
                         ],
                       ),
-                      SizedBox(height: 10,),
+                      SizedBox(height: 25,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           InkWell(
                             onTap: (){
-                              Navigator.pushReplacementNamed(context, '/revision_lessons');
+                              Navigator.pushReplacementNamed(context, '/basic_math');
                             },
                             child: Container(
-                              width: MediaQuery.of(context).size.width/3.2,
+                              width: 150,
+                              height: 150,
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
-                                  color: Colors.deepOrange[400]
+                                shape: BoxShape.circle,
+                                color: Colors.blue[900],
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.blue[900]!.withOpacity(0.5),
+                                    spreadRadius: 5,
+                                    blurRadius: 7,
+                                    offset: Offset(0, 3), // changes the position of the shadow
+                                  ),
+                                ],
                               ),
-                              child: Text('حصص المراجعة',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                              child: Center(
+                                child: Text('الاساسية',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(fontSize: 21, color: Colors.white),
+                                ),
                               ),
                             ),
                           ),
                           InkWell(
                             onTap: (){
+                              Navigator.pushReplacementNamed(context, '/revision_lessons');
+                            },
+                            child: Container(
+                              width: 150,
+                              height: 150,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.grey[300],
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.5),
+                                    spreadRadius: 5,
+                                    blurRadius: 7,
+                                    offset: Offset(0, 3), // changes the position of the shadow
+                                  ),
+                                ],
+                              ),
+                              child: Center(
+                                child: Text('حصص المراجعة',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(fontSize: 21,),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 25,),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          InkWell(
+                            onTap: (){
                               Navigator.pushReplacementNamed(context, '/first_class_math');
                             },
                             child: Container(
-                              width: MediaQuery.of(context).size.width/3.5,
+                              width: 150,
+                              height: 150,
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
-                                  color: Colors.deepOrange[400]
+                                shape: BoxShape.circle,
+                                color: Colors.grey[300],
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.5),
+                                    spreadRadius: 5,
+                                    blurRadius: 7,
+                                    offset: Offset(0, 3), // changes the position of the shadow
+                                  ),
+                                ],
                               ),
-                              child: Text('الصف الاول',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                              child: Center(
+                                child: Text('الصف الاول',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(fontSize: 21,),
+                                ),
                               ),
                             ),
                           ),
@@ -164,14 +225,25 @@ class _Subject_homeState extends State<Subject_home> {
                               Navigator.pushReplacementNamed(context, '/second_class_math');
                             },
                             child: Container(
-                              width: MediaQuery.of(context).size.width/3.5,
+                              width: 150,
+                              height: 150,
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
-                                  color: Colors.deepOrange[400]
+                                shape: BoxShape.circle,
+                                color: Colors.blue[900],
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.blue[900]!.withOpacity(0.5),
+                                    spreadRadius: 5,
+                                    blurRadius: 7,
+                                    offset: Offset(0, 3), // changes the position of the shadow
+                                  ),
+                                ],
                               ),
-                              child: Text('الصف الثاني',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                              child: Center(
+                                child: Text('الصف الثاني',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(fontSize: 21, color: Colors.white),
+                                ),
                               ),
                             ),
                           ),
@@ -181,30 +253,7 @@ class _Subject_homeState extends State<Subject_home> {
                     ],
                   ),
                 ),
-
-                SizedBox(height: 30,),
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.width/4.2,
-                  decoration: BoxDecoration(
-                    color: Colors.blue[900],
-                    borderRadius: BorderRadius.circular(0)
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 8.0, right: 28),
-                            child: Text('يمكنك مشاهدة الحصة الاولى في اي باب مباشرة و مجانا ', style: GoogleFonts.alexandria(
-                              fontSize: 17, color: Colors.white
-                            ),
-                            ),
-                          ),
-
-                        ],
-                      ),
-                ),
-                SizedBox(height: 25,),
+                SizedBox(height: 40,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -223,34 +272,34 @@ class _Subject_homeState extends State<Subject_home> {
                   child: Divider(color: Colors.deepOrange, thickness: 2,),
                 ),
                 SizedBox(height: 15, ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Container(
-                      height: MediaQuery.of(context).size.width/2.5,
-                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.width/3,
+                      width: MediaQuery.of(context).size.width/2.5,
                       decoration: BoxDecoration(
                           image: DecorationImage(
                             image: AssetImage('assets/images/bankk3.webp'),
                             fit: BoxFit.cover,
                             colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.5), BlendMode.darken),
                           ),
-                          color: Colors.blue,
+                          borderRadius: BorderRadius.circular(12)
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'بنكك على رقم الحساب',
+                            'بنكك على الحساب',
                             style: TextStyle(
-                                fontSize: 23,
+                                fontSize: 17,
                                 fontWeight: FontWeight.bold,
                               color: Colors.white
                             ),
                           ),
                           Text('2916188',
                             style: TextStyle(
-                                fontSize: 22,
+                                fontSize: 18,
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold
                             ),
@@ -258,48 +307,30 @@ class _Subject_homeState extends State<Subject_home> {
                         ],
                       ),
                     ),
-                    SizedBox(height: 10,),
-                    Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        SizedBox(
-                          width: 200,
-                            child: Divider(color: Colors.deepOrange, thickness: 1,)
-                        ),
-                        Container(
-                          color: Colors.white,
-                          child: Text('أو',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 17),
-                          ),
-                        )
-                      ],
-                    ),
-                    SizedBox(height: 10,),
                     Container(
-                      height: MediaQuery.of(context).size.width/2.5,
-                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.width/3,
+                      width: MediaQuery.of(context).size.width/2.5,
                       decoration: BoxDecoration(
                           image: DecorationImage(
                             image: AssetImage('assets/images/Vodafone-Cash2.png'),
                             fit: BoxFit.cover,
                             colorFilter: ColorFilter.mode(Colors.black45.withOpacity(0.6), BlendMode.darken),
                           ),
-                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(12)
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            '  عن طريق فودافون كاش',
+                            'فودافون كاش',
                             style: TextStyle(
-                                fontSize: 23,
+                                fontSize: 17,
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold
                             ),
                           ),
                           Text('. . . coming soon',
-                            style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
+                            style: TextStyle(fontSize: 16, color: Colors.white, fontWeight: FontWeight.bold),
                           ),
                         ],
                       ),
@@ -312,6 +343,7 @@ class _Subject_homeState extends State<Subject_home> {
                   child: Text('** ثم ارسال الاشعار على واتساب باسم الطالب علي اي من الارقام التالية : \n '
                       ' 249912212622+ || 201508442003+ ',
                     textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 16),
                   ),
                 ),
                 SizedBox(height: 40,),
@@ -336,13 +368,9 @@ class _Subject_homeState extends State<Subject_home> {
                       )
                     )
                 ),
-                SizedBox(
-                  width: 100,
-                  child: Divider(color: Colors.deepOrange, thickness: 2,),
-                ),
+
                 SizedBox(height: 50,),
                 // SubjectNavigator(),
-
               ],
             )]
         )
