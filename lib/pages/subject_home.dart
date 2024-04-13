@@ -18,7 +18,6 @@ class Subject_home extends StatefulWidget {
 
 class _Subject_homeState extends State<Subject_home> {
 
-
   //url lancher
   void _launchWebsite() async {
     String url = 'https://muaz-website.com/subjects-pdf';
@@ -29,13 +28,12 @@ class _Subject_homeState extends State<Subject_home> {
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
     return  Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        appBar: MyAppBar(context),
+        appBar: MyAppBar(context, true),
         drawer: AppDrawer(),
         body: ListView(
             children: [
@@ -43,14 +41,14 @@ class _Subject_homeState extends State<Subject_home> {
               children: [
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  color: Colors.grey[100],
-                  // decoration: BoxDecoration(
-                  //     image: DecorationImage(
-                  //         image: AssetImage('assets/images/bg3.jpg'),
-                  //         fit: BoxFit.cover,
-                  //       colorFilter: ColorFilter.mode(Colors.blueGrey.withOpacity(0.5), BlendMode.lighten)
-                  //     )
-                  // ),
+                  height: MediaQuery.of(context).size.height/1.05,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage('assets/images/bg3.jpg'),
+                          fit: BoxFit.cover,
+                          colorFilter: ColorFilter.mode(Colors.blueGrey.withOpacity(0.5), BlendMode.lighten)
+                      ),
+                  ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -58,18 +56,18 @@ class _Subject_homeState extends State<Subject_home> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(top: 20.0, right: 10),
+                            padding: const EdgeInsets.only(top: 10.0, right: 10),
                             child: Text(' مواد الرياضيات :',
-                              style: TextStyle(
-                                  color: Colors.black,
+                              style: GoogleFonts.alexandria(
+                                  color: Colors.white,
                                   fontSize: 30,
-                                  // fontWeight: FontWeight.w600
+                                  fontWeight: FontWeight.w600
                               )
                             ),
                           ),
                         ],
                       ),
-                      SizedBox(height: 30,),
+                      SizedBox(height: 20,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
@@ -85,7 +83,7 @@ class _Subject_homeState extends State<Subject_home> {
                                   color: Colors.grey[300],
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.grey.withOpacity(0.5),
+                                    color: Colors.black.withOpacity(0.5),
                                     spreadRadius: 5,
                                     blurRadius: 7,
                                     offset: Offset(0, 3), // changes the position of the shadow
@@ -109,10 +107,10 @@ class _Subject_homeState extends State<Subject_home> {
                               height: 150,
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                color: Colors.blue[900],
+                                color: Colors.deepOrange,
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.blue[900]!.withOpacity(0.5),
+                                    color: Colors.black.withOpacity(0.5),
                                     spreadRadius: 5,
                                     blurRadius: 7,
                                     offset: Offset(0, 3), // changes the position of the shadow
@@ -142,10 +140,10 @@ class _Subject_homeState extends State<Subject_home> {
                               height: 150,
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                color: Colors.blue[900],
+                                color: Colors.deepOrange,
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.blue[900]!.withOpacity(0.5),
+                                    color: Colors.black.withOpacity(0.5),
                                     spreadRadius: 5,
                                     blurRadius: 7,
                                     offset: Offset(0, 3), // changes the position of the shadow
@@ -172,7 +170,7 @@ class _Subject_homeState extends State<Subject_home> {
                                 color: Colors.grey[300],
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.grey.withOpacity(0.5),
+                                    color: Colors.black.withOpacity(0.5),
                                     spreadRadius: 5,
                                     blurRadius: 7,
                                     offset: Offset(0, 3), // changes the position of the shadow
@@ -205,7 +203,7 @@ class _Subject_homeState extends State<Subject_home> {
                                 color: Colors.grey[300],
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.grey.withOpacity(0.5),
+                                    color: Colors.black.withOpacity(0.5),
                                     spreadRadius: 5,
                                     blurRadius: 7,
                                     offset: Offset(0, 3), // changes the position of the shadow
@@ -229,10 +227,10 @@ class _Subject_homeState extends State<Subject_home> {
                               height: 150,
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                color: Colors.blue[900],
+                                color: Colors.deepOrange,
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.blue[900]!.withOpacity(0.5),
+                                    color: Colors.black.withOpacity(0.5),
                                     spreadRadius: 5,
                                     blurRadius: 7,
                                     offset: Offset(0, 3), // changes the position of the shadow

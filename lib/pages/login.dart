@@ -157,7 +157,6 @@ class _LoginPageState extends State<LoginPage> {
                     });
                     //cal login request model
                     String? deviceId = await _getId();
-                    print(deviceId);
                     Login_Model model = Login_Model(username: username!, phoneNum: phoneNum!, deviceId: deviceId!);
                     //call api
                     APISERVICE_Auth.Login(model).then((response) {
@@ -224,6 +223,7 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
+
 bool validateAndSave(){
     final form = globalFormKey.currentState;
     if(form!.validate()){

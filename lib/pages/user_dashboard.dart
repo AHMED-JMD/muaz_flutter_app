@@ -41,7 +41,7 @@ class _UsrDashboardState extends State<UsrDashboard> {
             if(model.hasData){
               return
                 Scaffold(
-                  appBar: MyAppBar(context),
+                  appBar: MyAppBar(context, true),
                   drawer: AppDrawer(),
                   body: Padding(
                     padding: const EdgeInsets.only(top: 20.0),

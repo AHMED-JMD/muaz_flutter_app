@@ -112,7 +112,7 @@ class _BasicState extends State<Basic> {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        appBar: MyAppBar(context),
+        appBar: MyAppBar(context, false),
         drawer: AppDrawer(),
         body: ListView(
           children: [

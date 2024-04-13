@@ -112,7 +112,7 @@ class _Math1State extends State<Math1> {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        appBar: MyAppBar(context),
+        appBar: MyAppBar(context, false),
         drawer: AppDrawer(),
         body: ListView(
           children: [

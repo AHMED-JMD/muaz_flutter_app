@@ -37,7 +37,6 @@ class _SubjectDetailsState extends State<SubjectDetails> {
   }
   @override
   Widget build(BuildContext context) {
-     print(videos);
     return  Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(

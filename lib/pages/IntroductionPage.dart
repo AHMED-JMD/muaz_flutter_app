@@ -25,13 +25,12 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   Widget build(BuildContext context) {
 
     var pageDecoration = PageDecoration(
-      titleTextStyle: GoogleFonts.acme(fontSize: 22.0, fontWeight: FontWeight.w700),
+      titleTextStyle: GoogleFonts.cairo(fontSize: 22.0, fontWeight: FontWeight.w700),
       bodyTextStyle: TextStyle(fontSize: 19.0),
       bodyPadding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
       pageColor: Colors.white,
       imagePadding: EdgeInsets.zero,
     );
-
 
     return Directionality(
         textDirection: TextDirection.rtl,
@@ -39,10 +38,10 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           key: introKey,
           pages: [
             PageViewModel(
-              title: "مرحبا في منصة الأستاذ معاذ 😊",
+              title: "مرحبا في منصة الأستاذ معاذ ",
               body: "تحتوي المنصة على جميع مواد رياضيات المرحلة الثانوية - (المتخصصة , الاساسية , الصف الأول , الصف الثاني)",
               image: Center(
-                child: Icon(Icons.waving_hand, size: 50.0, color: Colors.deepOrange[600],),
+                child: Icon(Icons.waving_hand, size: 80.0, color: Colors.deepOrange,),
               ),
               decoration: pageDecoration,
             ),
@@ -107,7 +106,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 ],
               ),
               image: Center(
-                child: Icon(Icons.payments, size: 80.0, color: Colors.deepOrange),
+                child: Icon(Icons.paypal, size: 80.0, color: Colors.deepOrange),
               ),
               decoration: pageDecoration,
             ),
@@ -115,19 +114,19 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           allowImplicitScrolling: true,
           autoScrollDuration: 6000,
           infiniteAutoScroll: true,
-          globalHeader: Align(
-            alignment: Alignment.topRight,
-            child: SafeArea(
-              child: Padding(
-                padding: const EdgeInsets.only(top: 16, right: 16),
-                child: Image.asset(
-                  'assets/images/app_icon.png',
-                  width: 40,
-                  height: 40,
-                ),
-              ),
-            ),
-          ),
+          // globalHeader: Align(
+          //   alignment: Alignment.topRight,
+          //   child: SafeArea(
+          //     child: Padding(
+          //       padding: const EdgeInsets.only(top: 16, right: 16),
+          //       child: Image.asset(
+          //         'assets/images/app_icon.png',
+          //         width: 35,
+          //         height: 35,
+          //       ),
+          //     ),
+          //   ),
+          // ),
           globalFooter: SizedBox(
             width: double.infinity,
             height: 60,
@@ -146,14 +145,14 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           done: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(7),
-              color: Colors.deepOrange[400]
+              // color: Colors.deepOrange[400]
             ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Go', style: TextStyle(fontSize: 17, color: Colors.white),),
+                  Text('Go', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),),
                   SizedBox(width: 4,),
-                  Icon(Icons.keyboard_arrow_left_sharp, color: Colors.white,size: 20,)
+                  Icon(Icons.keyboard_arrow_left_sharp, color: Colors.black,size: 20,)
                 ],
               )
           ),

@@ -45,9 +45,8 @@ void main() async {
               '/downloads' : (context) => Downloads(),
             }
         );
-    }
+      }
     )
-
   );
   }
 

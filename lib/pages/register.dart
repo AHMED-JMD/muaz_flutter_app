@@ -172,7 +172,6 @@ class _RegisterState extends State<Register> {
                       });
                       //register model
                       String? deviceId = await _getId();
-                      print(deviceId);
                       RegisterModel model = RegisterModel(username: username!, phoneNum: phoneNum!, confirmPhon: confirmPhon!, deviceId: deviceId!);
                       //call api
                       APISERVICE_Auth.Register(model).then((response) {
